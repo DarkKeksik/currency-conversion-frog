@@ -1,0 +1,1 @@
+export { default as CurrenciesCrypto } from './src/CurrenciesCrypto/CurrenciesCrypto'
