@@ -1,7 +1,7 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: [
-    "../UIKitWidgetsCurrencies/*.stories.@(js|jsx|ts|tsx)"
+    "../UIKitWidgetsCurrencies/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   addons: [
     'storybook-addon-swc',
