@@ -1,1 +1,1 @@
-export { default as CurrenciesCrypto } from './src/components/CurrenciesCrypto/CurrenciesCrypto'
+export { default as CurrenciesCrypto } from './src/widgets/CurrenciesCrypto/CurrenciesCrypto'
