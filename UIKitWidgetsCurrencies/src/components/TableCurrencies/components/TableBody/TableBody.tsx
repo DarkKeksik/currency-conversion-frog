@@ -4,7 +4,7 @@ import * as Styled from './TableBody.styled'
 const TableBody: FC<any> = ({ dataItems }) => {
   return (
     <Styled.TableBody>
-      {dataItems.map(({name, abbreviation, change, value ,isSelected}) => (
+      {dataItems.map(({name, abbreviation, change, value, isSelected}) => (
           <Styled.TableItem isActive={isSelected}>
             <Styled.WrapName>
               <Styled.CurrencyName>{name}</Styled.CurrencyName>

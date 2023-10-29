@@ -3,6 +3,7 @@ const config = {
   stories: [
     "../UIKitWidgetsCurrencies/**/*.stories.@(js|jsx|ts|tsx)"
   ],
+  staticDirs: ['../assets'],
   addons: [
     'storybook-addon-swc',
     "@storybook/addon-links",
@@ -13,9 +14,7 @@ const config = {
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
-  },
-};
+  }
+}
+
 export default config;

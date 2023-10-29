@@ -1,17 +1,18 @@
 import React, { FC } from 'react'
 
-import { Table } from '../../components'
+import { TableCurrencies, TableCurrenciesParts } from '../../components'
 import * as Styled from './CurrenciesCrypto.styled'
 
-const CurrenciesCrypto: FC<any> = ({ currenciesListCrypto, currenciesListStable }) => {
+const CurrenciesCrypto: FC<any> = ({ dataCurrenciesCrypto, dataCurrenciesStable }) => {
   return (
-    <>
-      <Styled.GlobalStyle />
-      <Styled.Wrap>
-        <Table bodyData={currenciesListCrypto} />
-        <Table bodyData={currenciesListStable} />
-      </Styled.Wrap>
-    </>
+    <Styled.Wrap>
+      <TableCurrencies dataItems={dataCurrenciesCrypto}>
+        <TableCurrenciesParts.TableHead>
+          From
+        </TableCurrenciesParts.TableHead>
+      </TableCurrencies>
+      <TableCurrencies title='To' dataItems={dataCurrenciesStable} />
+    </Styled.Wrap>
   )
 }
 

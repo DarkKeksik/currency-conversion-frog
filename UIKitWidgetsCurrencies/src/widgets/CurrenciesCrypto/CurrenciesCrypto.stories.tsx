@@ -1,14 +1,16 @@
 import CurrenciesCrypto from './CurrenciesCrypto'
 
-export default {
+const meta = {
   component: CurrenciesCrypto,
   title: 'widget for currencies (crypto)',
   tags: ['autodocs'],
 }
 
-export const Default = {
+export default meta
+
+export const Primary = {
   args: {
-    currenciesListCrypto: [
+    dataCurrenciesCrypto: [
       {
         name: 'Bitcoin',
         abbreviation: 'BTC/USDT',
@@ -32,7 +34,7 @@ export const Default = {
         change: '+6%'
       }
     ],
-    currenciesListStable: [
+    dataCurrenciesStable: [
       {
         name: 'United States dollar',
         abbreviation: 'USD',
@@ -52,9 +54,9 @@ export const Default = {
   },
 }
 
-export const Test = {
+export const Secondary = {
   args: {
-    ...Default.args
+    ...Primary.args
   },
 }
 

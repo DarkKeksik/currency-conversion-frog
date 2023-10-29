@@ -6,12 +6,12 @@ export const Head = styled.div`
   justify-content: space-between;
   padding: 1em;
   font-size: 14px;
+  color: #d1d6dd;
   background: #1d2634;
 `
 
 export const Title = styled.p`
   font-weight: 700;
-  color: #d1d6dd;
 `
 
 export const CurrencySearch = styled.p`

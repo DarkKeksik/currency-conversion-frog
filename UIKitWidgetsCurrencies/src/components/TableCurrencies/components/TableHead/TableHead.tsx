@@ -2,15 +2,18 @@ import React, {FC, PropsWithChildren} from 'react'
 import * as Styled from './TableHead.styled'
 
 type TypeTableHead = PropsWithChildren & {
-  title: string
+  title?: string
 }
 
 const TableHead: FC<TypeTableHead> = ({ children, title }) => {
   return (
     <Styled.Head>
-      <Styled.Title>{ title }</Styled.Title>
-      <Styled.CurrencySearch>Search...</Styled.CurrencySearch>
-      { children }
+      {children ?? (
+        <>
+          <Styled.Title>{ title }</Styled.Title>
+          <Styled.CurrencySearch>Search...</Styled.CurrencySearch>
+        </>
+      )}
     </Styled.Head>
   )
 }
