@@ -19,11 +19,9 @@ export const Primary = {
         change: '+3%'
       },
       {
-        isSelected: true,
         name: 'Ethereum',
         abbreviation: 'ETH/USDT',
         price: 1781.15,
-        value: 2,
         change: '+1%'
       },
       {
@@ -43,20 +41,28 @@ export const Primary = {
       {
         name: 'Euro',
         abbreviation: 'EUR',
-        price: 1781.15
+        price: 1781.15,
+        isSelected: true,
+        value: 2,
       },
       {
         name: 'Pound sterling',
         abbreviation: 'GBP',
         price: 0.09351
       }
-    ]
+    ],
+    rowsMax: 5,
+    rowsMaxStable: 3,
+    rowsMaxCrypto: 3,
   },
 }
 
 export const Secondary = {
   args: {
-    ...Primary.args
+    ...Primary.args,
+    rowsMax: 5,
+    rowsMaxStable: 4,
+    rowsMaxCrypto: 4,
   },
 }
 
