@@ -1,0 +1,1 @@
+export { default as ChartGrowth } from './ChartGrowth/ChartGrowth'

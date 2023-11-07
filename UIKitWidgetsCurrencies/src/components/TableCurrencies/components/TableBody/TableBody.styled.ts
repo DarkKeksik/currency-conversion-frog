@@ -1,6 +1,7 @@
-import styled, {css} from "styled-components"
+import styled from "styled-components"
 
 export const TableBody = styled.div`
+  letter-spacing: 1px;
   background: #2b3947;
 `
 
@@ -13,7 +14,6 @@ export const WrapName = styled.div`
 export const CurrencyName = styled.span`
   font-size: 14px;
   color: #d1d6dd;
-  font-weight: 700;
 `
 
 export const CurrencyAbbreviation = styled.span`
@@ -37,25 +37,24 @@ export const CurrencyValue = styled.span`
   color: #d1d6dd;
 `
 
-export const TableItem = styled.div<{ isActive?: boolean }>`
-  gap: 10px;
-  padding: 1em 1.5em;
+export const Item = styled.div`
+  padding: 1em 1.8em;
+  cursor: pointer;
   transition-duration: .3s;
 
-  ${(props) => props.isActive ? (
-          css`
-      display: flex;
-      justify-content: space-between;
-      background: #26ad8d;
-    `) : (
-          css `
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        cursor: pointer;
-        
-        &:hover {
-          background-color: #2b4a51;
-        }
-    `)
+  &:hover {
+    background-color: #2b4a51;
+  }
+`
+
+export const ItemSelected = styled.div`
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  padding: 1em 1.8em;
+  background: #26ad8d;
+  
+  // @TODO have to fix build styled-components 
+  ${ WrapName } {
+    border-right: 2px solid #2b3947;
   }
 `

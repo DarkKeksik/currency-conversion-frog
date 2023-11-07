@@ -5,8 +5,10 @@ export const Head = styled.div`
   gap: 5px;
   justify-content: space-between;
   padding: 1em;
-  font-size: 14px;
+  font-size: 18px;
+  letter-spacing: 1px;
   color: #d1d6dd;
+  font-weight: 700;
   background: #1d2634;
 `
 

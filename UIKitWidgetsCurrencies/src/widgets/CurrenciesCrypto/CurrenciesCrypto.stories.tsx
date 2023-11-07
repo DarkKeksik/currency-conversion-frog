@@ -8,8 +8,9 @@ const meta = {
 
 export default meta
 
-export const Primary = {
+export const DefaultProps = {
   args: {
+    isWidgetTitle: true,
     dataCurrenciesCrypto: [
       {
         name: 'Bitcoin',
@@ -57,12 +58,14 @@ export const Primary = {
   },
 }
 
-export const Secondary = {
+export const CustomProps = {
   args: {
-    ...Primary.args,
+    ...DefaultProps.args,
+    widgetTitle: 'Custom name',
+    isWidgetTitle: true,
     rowsMax: 5,
     rowsMaxStable: 4,
-    rowsMaxCrypto: 4,
+    rowsMaxCrypto: 3,
   },
 }
 

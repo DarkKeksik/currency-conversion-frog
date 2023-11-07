@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 
-import { TableCurrencies, TableCurrenciesParts, WidgetTitle } from '../../components'
+import { TableCurrencies, TableCurrenciesParts, WidgetTitle, Charts } from '../../components'
 import * as Styled from './CurrenciesCrypto.styled'
 
 type TCurrenciesCrypto = {
   widgetTitle: string,
+  isWidgetTitle?: boolean,
   dataCurrenciesCrypto: any,
   dataCurrenciesStable: any,
   rowsMax?: number,
@@ -16,22 +17,25 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     dataCurrenciesCrypto,
     dataCurrenciesStable,
     widgetTitle,
+    isWidgetTitle = true,
     rowsMax = 5,
     rowsMaxStable,
     rowsMaxCrypto
 }) => {
   return (
     <Styled.Wrap>
-      <WidgetTitle title={widgetTitle ?? 'Cryptocurrency converter'} />
+      {isWidgetTitle && <WidgetTitle title={widgetTitle ?? 'Cryptocurrency converter'} />}
+
       <Styled.WrapTables>
         <TableCurrencies rowsMax={rowsMaxStable || rowsMax} dataItems={dataCurrenciesStable}>
-          <TableCurrenciesParts.TableHead>From</TableCurrenciesParts.TableHead>
+          <TableCurrenciesParts.TableHead>World currencies</TableCurrenciesParts.TableHead>
         </TableCurrencies>
 
         <TableCurrencies rowsMax={rowsMaxCrypto || rowsMax} dataItems={dataCurrenciesCrypto}>
-          <TableCurrenciesParts.TableHead>To</TableCurrenciesParts.TableHead>
+          <TableCurrenciesParts.TableHead>Cryptocurrencies</TableCurrenciesParts.TableHead>
         </TableCurrencies>
       </Styled.WrapTables>
+      <Charts.ChartGrowth />
     </Styled.Wrap>
   )
 }

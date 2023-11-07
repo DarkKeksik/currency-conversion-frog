@@ -16,7 +16,7 @@ export const PanelItem = styled.p<{isActive?: boolean}>`
   width: 1.4rem;
   height: 1.4rem;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: 18rem;
   cursor: pointer;
   transition-duration: .3s;
 
