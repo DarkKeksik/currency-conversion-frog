@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
-import { TableCurrencies, TableCurrenciesParts, WidgetTitle, Charts } from '../../components'
+import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts } from '../../components'
 import * as Styled from './CurrenciesCrypto.styled'
 
 type TCurrenciesCrypto = {
@@ -22,6 +22,13 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     rowsMaxStable,
     rowsMaxCrypto
 }) => {
+  const [ descriptionBlockData, SetDescriptionBlockData ] = useState({
+    title: 'Changes "BTC/EUR',
+    subtitle: 'over 6 months',
+    items: ['25119.40 USD', '34974.40 USD'],
+    rateChange: '+15.3%'
+  })
+
   return (
     <Styled.Wrap>
       {isWidgetTitle && <WidgetTitle title={widgetTitle ?? 'Cryptocurrency converter'} />}
@@ -35,7 +42,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           <TableCurrenciesParts.TableHead>Cryptocurrencies</TableCurrenciesParts.TableHead>
         </TableCurrencies>
       </Styled.WrapTables>
-      <Charts.ChartGrowth />
+      <StatisticCharts {...{ descriptionBlockData }} />
     </Styled.Wrap>
   )
 }

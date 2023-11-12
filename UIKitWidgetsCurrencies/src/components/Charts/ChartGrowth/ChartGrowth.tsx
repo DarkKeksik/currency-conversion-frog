@@ -1,27 +1,34 @@
-import React, {FC} from 'react'
+import React, { FC, useState } from 'react'
+import {
+  LineChart, PieChart, Line, XAxis,
+  YAxis, CartesianGrid, Tooltip,
+  Legend, ResponsiveContainer, Pie
+} from 'recharts'
 
+import { dataMock } from './dataMock'
 import * as Styled from './ChartGrowth.styled'
 
 const ChartGrowth: FC = () => {
+  const [ dataChart, setDataChart ] = useState(dataMock)
+
   return (
-    <Styled.ChartGrowth>
-      <Styled.Description>
-        <Styled.DescriptionTitle>
-          Changes "BTC/USDT"
-          <Styled.DescriptionSubtitle>over 6 months</Styled.DescriptionSubtitle>
-        </Styled.DescriptionTitle>
-        <Styled.DescriptionItems>
-          <Styled.DescriptionCol>
-            <Styled.DescriptionItem>25119.40 USD</Styled.DescriptionItem>
-            <Styled.DescriptionItem>34974.40 USD</Styled.DescriptionItem>
-          </Styled.DescriptionCol>
-          <Styled.DescriptionCol>
-            <Styled.RateChange isRising>+15.3%</Styled.RateChange>
-          </Styled.DescriptionCol>
-        </Styled.DescriptionItems>
-      </Styled.Description>
-      <Styled.WrapCharts />
-    </Styled.ChartGrowth>
+    <Styled.WrapCharts>
+      <ResponsiveContainer height={200} width={350}>
+        <LineChart data={dataChart}>
+          <CartesianGrid />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="Bitcoin" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="Ethereum" stroke="#82ca9d" />
+        </LineChart>
+      </ResponsiveContainer>
+
+      <PieChart width={200} height={250}>
+        <Pie data={dataChart} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
+      </PieChart>
+    </Styled.WrapCharts>
   )
 }
 

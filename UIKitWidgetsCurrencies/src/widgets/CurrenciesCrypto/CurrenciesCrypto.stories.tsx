@@ -14,20 +14,20 @@ export const DefaultProps = {
     dataCurrenciesCrypto: [
       {
         name: 'Bitcoin',
-        abbreviation: 'BTC/USDT',
+        abbreviation: 'BTC/EUR',
         price: 33.839,
         value: 1,
         change: '+3%'
       },
       {
         name: 'Ethereum',
-        abbreviation: 'ETH/USDT',
+        abbreviation: 'ETH/EUR',
         price: 1781.15,
         change: '+1%'
       },
       {
         name: 'Tether USDt',
-        abbreviation: 'TRX/USDT',
+        abbreviation: 'TRX/EUR',
         price: 0.09351,
         value: 1,
         change: '+6%'
@@ -63,9 +63,8 @@ export const CustomProps = {
     ...DefaultProps.args,
     widgetTitle: 'Custom name',
     isWidgetTitle: true,
-    rowsMax: 5,
-    rowsMaxStable: 4,
-    rowsMaxCrypto: 3,
+    rowsMaxStable: 2,
+    rowsMaxCrypto: 2,
   },
 }
 
