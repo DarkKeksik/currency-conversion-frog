@@ -4,14 +4,24 @@ import { InfoBlock, Charts } from '../'
 import * as Styled from './StatisticCharts.styled'
 
 type TChartGrowth = {
-  descriptionBlockData: Array<any>
+  dataDescription: Array<any>
+  title: string
 }
 
-const ChartGrowth: FC<TChartGrowth> = ({descriptionBlockData}) => {
+const ChartGrowth: FC<TChartGrowth> = ({dataDescription, title}) => {
   return (
     <Styled.StatisticCharts>
-      <InfoBlock { ...descriptionBlockData } />
-      <Charts.ChartGrowth />
+      <InfoBlock { ...dataDescription } />
+
+      <Styled.ChartsGrowth>
+        {title && <Styled.Title>{ title }</Styled.Title>}
+
+        <Styled.WrapCharts>
+          <Charts.ChartLine width="80%" />
+          <Charts.ChartPie />
+        </Styled.WrapCharts>
+
+      </Styled.ChartsGrowth>
     </Styled.StatisticCharts>
   )
 }

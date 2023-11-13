@@ -50,11 +50,4 @@ export const RateChange = styled.p<{isRising: boolean}>`
   // }
 `
 
-export const WrapCharts = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 10px;
-  background: #2b3947;
-`
-
 export const TitleCharts = styled.p``

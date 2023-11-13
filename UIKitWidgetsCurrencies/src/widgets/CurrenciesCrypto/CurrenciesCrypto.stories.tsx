@@ -11,12 +11,12 @@ export default meta
 export const DefaultProps = {
   args: {
     isWidgetTitle: true,
+    isVisibleStatisticCharts: true,
     dataCurrenciesCrypto: [
       {
         name: 'Bitcoin',
         abbreviation: 'BTC/EUR',
         price: 33.839,
-        value: 1,
         change: '+3%'
       },
       {
@@ -29,7 +29,6 @@ export const DefaultProps = {
         name: 'Tether USDt',
         abbreviation: 'TRX/EUR',
         price: 0.09351,
-        value: 1,
         change: '+6%'
       }
     ],
@@ -43,8 +42,6 @@ export const DefaultProps = {
         name: 'Euro',
         abbreviation: 'EUR',
         price: 1781.15,
-        isSelected: true,
-        value: 2,
       },
       {
         name: 'Pound sterling',
@@ -54,7 +51,7 @@ export const DefaultProps = {
     ],
     rowsMax: 5,
     rowsMaxStable: 3,
-    rowsMaxCrypto: 3,
+    rowsMaxCrypto: 3
   },
 }
 

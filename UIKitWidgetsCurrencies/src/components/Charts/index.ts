@@ -1,1 +1,2 @@
-export { default as ChartGrowth } from './ChartGrowth/ChartGrowth'
+export { default as ChartLine } from './ChartLine/ChartLine'
+export { default as ChartPie } from './ChartPie/ChartPie'

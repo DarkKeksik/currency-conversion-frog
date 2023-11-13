@@ -15,7 +15,6 @@ const InfoBlock: FC<TInfoBlock> = ({
   items,
   rateChange
 }) => {
-  console.log(title)
   if( !items ) {
     return null
   }

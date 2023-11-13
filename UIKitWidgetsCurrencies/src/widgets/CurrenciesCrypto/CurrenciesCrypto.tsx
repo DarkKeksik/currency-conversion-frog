@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, {FC, useState} from 'react'
 
 import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts } from '../../components'
 import * as Styled from './CurrenciesCrypto.styled'
@@ -11,6 +11,7 @@ type TCurrenciesCrypto = {
   rowsMax?: number,
   rowsMaxStable?: number,
   rowsMaxCrypto?: number
+  isVisibleStatisticCharts?: boolean
 }
 
 const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
@@ -20,9 +21,10 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     isWidgetTitle = true,
     rowsMax = 5,
     rowsMaxStable,
-    rowsMaxCrypto
+    rowsMaxCrypto,
+    isVisibleStatisticCharts
 }) => {
-  const [ descriptionBlockData, SetDescriptionBlockData ] = useState({
+  const [ dataDescription, setDataDescription ] = useState({
     title: 'Changes "BTC/EUR',
     subtitle: 'over 6 months',
     items: ['25119.40 USD', '34974.40 USD'],
@@ -42,7 +44,13 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           <TableCurrenciesParts.TableHead>Cryptocurrencies</TableCurrenciesParts.TableHead>
         </TableCurrencies>
       </Styled.WrapTables>
-      <StatisticCharts {...{ descriptionBlockData }} />
+
+      {isVisibleStatisticCharts && (
+        <StatisticCharts
+          title='Growth charts'
+          dataDescription={dataDescription}
+        />
+      )}
     </Styled.Wrap>
   )
 }
