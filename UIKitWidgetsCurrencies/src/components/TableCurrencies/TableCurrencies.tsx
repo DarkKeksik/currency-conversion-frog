@@ -7,18 +7,20 @@ type TypeTableCurrencies = PropsWithChildren & {
   dataItems: any
   title?: string
   rowsMax?: number
+  multiSelect?: boolean
 }
 
 const TableCurrencies: FC<TypeTableCurrencies> = ({
-    children,
-    dataItems = [],
-    title,
-    rowsMax = 5
+  children,
+  dataItems = [],
+  title,
+  rowsMax = 5,
+  multiSelect = false
 }) => {
   return (
     <Styled.TableCurrencies>
       {children ?? <TableHead title={title} />}
-      <TableBody dataItems={dataItems} rowsMax={rowsMax} />
+      <TableBody multiSelect={multiSelect} dataItems={dataItems} rowsMax={rowsMax} />
     </Styled.TableCurrencies>
   )
 }

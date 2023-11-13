@@ -4,7 +4,7 @@ import * as Styled from './TableBody.styled'
 import TablePanel from '../TablePanel/TablePanel'
 
 // @TODO Need fix for onClick and logic
-const TableBody: FC<any> = ({ dataItems, rowsMax }) => {
+const TableBody: FC<any> = ({ dataItems, rowsMax, multiSelect }) => {
   const [itemsList, setItemsList] = useState(dataItems.map((item) => (
     { ...item, isSelected: false }
   )))
@@ -26,11 +26,15 @@ const TableBody: FC<any> = ({ dataItems, rowsMax }) => {
           </Styled.ItemSelected>
         ) : (
           <Styled.Item onClick={() => setItemsList(
-            itemsList.map((item, idSelected) => (
-              id === idSelected ?
-                {...item, isSelected: true }:
-                {...item, isSelected: false}
-            ))
+            itemsList.map((item, idSelected) => {
+              if ( multiSelect ) {
+                return id === idSelected ? { ...item, isSelected: true } : {...item}
+              }
+
+              return id === idSelected ?
+                { ...item, isSelected: true }:
+                { ...item, isSelected: false }
+            })
           )} key={id}>
             <Styled.WrapName>
               <Styled.CurrencyName>{name}</Styled.CurrencyName>

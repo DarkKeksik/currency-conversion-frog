@@ -40,7 +40,11 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           <TableCurrenciesParts.TableHead>World currencies</TableCurrenciesParts.TableHead>
         </TableCurrencies>
 
-        <TableCurrencies rowsMax={rowsMaxCrypto || rowsMax} dataItems={dataCurrenciesCrypto}>
+        <TableCurrencies
+          multiSelect
+          dataItems={dataCurrenciesCrypto}
+          rowsMax={rowsMaxCrypto || rowsMax}
+        >
           <TableCurrenciesParts.TableHead>Cryptocurrencies</TableCurrenciesParts.TableHead>
         </TableCurrencies>
       </Styled.WrapTables>

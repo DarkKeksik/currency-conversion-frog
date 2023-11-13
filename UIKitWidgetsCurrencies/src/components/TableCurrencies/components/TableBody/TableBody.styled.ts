@@ -51,6 +51,7 @@ export const ItemSelected = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   padding: 1em 1.8em;
+  box-shadow: 0 3px 4px #1d2634;
   background: #26ad8d;
   
   // @TODO have to fix build styled-components 
