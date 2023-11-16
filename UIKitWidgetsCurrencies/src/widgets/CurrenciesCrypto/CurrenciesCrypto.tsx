@@ -36,16 +36,24 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
       {isWidgetTitle && <WidgetTitle title={widgetTitle ?? 'Cryptocurrency converter'} />}
 
       <Styled.WrapTables>
-        <TableCurrencies rowsMax={rowsMaxStable || rowsMax} dataItems={dataCurrenciesStable}>
-          <TableCurrenciesParts.TableHead>World currencies</TableCurrenciesParts.TableHead>
+        <TableCurrencies
+          rowsMax={rowsMaxStable || rowsMax}
+          dataItems={dataCurrenciesStable}
+        >
+          <TableCurrenciesParts.TableHead>
+            World currencies
+          </TableCurrenciesParts.TableHead>
         </TableCurrencies>
 
         <TableCurrencies
-          multiSelect
           dataItems={dataCurrenciesCrypto}
           rowsMax={rowsMaxCrypto || rowsMax}
+          multiSelect
+          hideInput
         >
-          <TableCurrenciesParts.TableHead>Cryptocurrencies</TableCurrenciesParts.TableHead>
+          <TableCurrenciesParts.TableHead>
+            Cryptocurrencies
+          </TableCurrenciesParts.TableHead>
         </TableCurrencies>
       </Styled.WrapTables>
 
