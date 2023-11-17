@@ -1,14 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const animationBlink = keyframes`
+  from { color: white }
+  to { color: #ffffff00 }
+`
 
 export const Wrap = styled.label`
   position: relative;
-`
-
-export const InputHide = styled.input`
-  position: absolute;
-  top: 0;
-  height: 0;
-  border: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const InputVisible = styled.div`
@@ -23,5 +23,23 @@ export const InputVisible = styled.div`
   
   &:hover {
     background: #2b3947;
+  }
+`
+
+export const InputHide = styled.input<{afterContent: string}>`
+  position: absolute;
+  top: 0;
+  height: 0;
+  border: 0;
+  
+  &:focus + ${ InputVisible } {
+    background: #2b3947;
+    box-shadow: inset 0 0 4px #1d2634;
+  }
+
+  &:focus + ${ InputVisible }:after {
+    content: '${({afterContent}) => afterContent || '...'}';
+    margin-left: 4px;
+    animation: .8s infinite alternate-reverse ${ animationBlink };
   }
 `
