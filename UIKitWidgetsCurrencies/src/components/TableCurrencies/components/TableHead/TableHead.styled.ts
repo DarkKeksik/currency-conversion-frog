@@ -8,7 +8,6 @@ export const Head = styled.div`
   font-size: 18px;
   letter-spacing: 1px;
   color: #d1d6dd;
-  font-weight: 700;
   background: #1d2634;
 `
 

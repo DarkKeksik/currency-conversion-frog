@@ -18,7 +18,7 @@ export const InputVisible = styled.div`
   height: 100%;
   padding: 0 .5rem;
   color: #d1d6dd;
-  font-size: 14px;
+  font-size: 13px;
   transition-duration: .3s;
   
   &:hover {

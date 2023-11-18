@@ -1,0 +1,1 @@
+export { default as IconDoubleArrows } from './IconDoubleArrows/IconDoubleArrows'

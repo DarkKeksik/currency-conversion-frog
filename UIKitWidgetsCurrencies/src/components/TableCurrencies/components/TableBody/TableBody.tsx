@@ -50,7 +50,12 @@ const TableBody: FC<any> = ({
                 <Styled.CurrencyValue>
                   { (Math.random() * 10).toFixed(6) }
                 </Styled.CurrencyValue>:
-                <Input afterContent={abbreviation} isAutoFocus />
+                <Input
+                  isAutoFocus
+                  placeholder='Enter a value'
+                  type='number'
+                  afterContent={abbreviation}
+                />
               }
 
             </Styled.ItemSelected>

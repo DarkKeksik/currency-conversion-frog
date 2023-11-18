@@ -5,19 +5,22 @@ import * as Styled from './Input.styled'
 type TInput = {
   afterContent?: string
   isAutoFocus?: boolean
+  placeholder?: string
+  type?: string
 }
 
 const Input: FC<TInput> = ({
   afterContent,
-  isAutoFocus
+  isAutoFocus,
+  placeholder = '',
+  type = 'string'
 }) => {
-  const defaultValue = "Enter a value"
-  const [value, setValue] = useState(defaultValue)
+  const [value, setValue] = useState(placeholder)
 
   const onChange = (e): void => {
     const { target: { value: inputVal } } = e
     if (!inputVal.length) {
-      return setValue(defaultValue)
+      return setValue(placeholder)
     }
 
     setValue(inputVal)
@@ -26,10 +29,10 @@ const Input: FC<TInput> = ({
   return (
     <Styled.Wrap>
       <Styled.InputHide
-        type="number"
+        type={type}
         onChange={onChange}
         autoFocus={isAutoFocus}
-        afterContent={value === defaultValue ? '...' : afterContent}
+        afterContent={value === placeholder ? '...' : afterContent}
       />
       <Styled.InputVisible>
         {value}

@@ -1,6 +1,7 @@
-import React, {FC, useState} from 'react'
+import React, { FC, useState } from 'react'
 
-import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts } from '../../components'
+import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts, Input } from '../../components'
+import { IconDoubleArrows } from '../../icons'
 import * as Styled from './CurrenciesCrypto.styled'
 
 type TCurrenciesCrypto = {
@@ -41,9 +42,14 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           dataItems={dataCurrenciesStable}
         >
           <TableCurrenciesParts.TableHead>
-            World currencies
+            <b>World currencies</b>
+            <Input type='string' placeholder='Search currency' />
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>
+
+        <Styled.ButtonChangeTable>
+          <IconDoubleArrows fill='#d1d6dd' />
+        </Styled.ButtonChangeTable>
 
         <TableCurrencies
           dataItems={dataCurrenciesCrypto}
@@ -52,7 +58,8 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           hideInput
         >
           <TableCurrenciesParts.TableHead>
-            Cryptocurrencies
+            <b>Cryptocurrencies</b>
+            <Input type='string' placeholder='Search cryptocurrency' />
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>
       </Styled.WrapTables>
