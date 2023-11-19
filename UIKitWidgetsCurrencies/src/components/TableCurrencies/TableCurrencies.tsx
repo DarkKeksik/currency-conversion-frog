@@ -9,6 +9,8 @@ type TypeTableCurrencies = PropsWithChildren & {
   rowsMax?: number
   multiSelect?: boolean
   hideInput?: boolean
+  isSelectedDefault?: boolean
+  callback?: () => void
 }
 
 const TableCurrencies: FC<TypeTableCurrencies> = ({
@@ -17,7 +19,9 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
   title,
   rowsMax = 5,
   multiSelect = false,
-  hideInput
+  hideInput,
+  isSelectedDefault,
+  callback
 }) => {
   return (
     <Styled.TableCurrencies>
@@ -27,6 +31,8 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
         dataItems={dataItems}
         rowsMax={rowsMax}
         hideInput={hideInput}
+        isSelectedDefault={isSelectedDefault}
+        callback={callback}
       />
     </Styled.TableCurrencies>
   )

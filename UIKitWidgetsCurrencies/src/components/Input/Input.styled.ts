@@ -30,6 +30,7 @@ export const InputHide = styled.input<{afterContent: string}>`
   position: absolute;
   top: 0;
   height: 0;
+  outline: none;
   border: 0;
   
   &:focus + ${ InputVisible } {

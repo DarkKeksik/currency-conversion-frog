@@ -11,7 +11,7 @@ export default meta
 export const DefaultProps = {
   args: {
     isWidgetTitle: true,
-    isVisibleStatisticCharts: true,
+    hasStatisticBlock: true,
     dataCurrenciesCrypto: [
       {
         name: 'Bitcoin',

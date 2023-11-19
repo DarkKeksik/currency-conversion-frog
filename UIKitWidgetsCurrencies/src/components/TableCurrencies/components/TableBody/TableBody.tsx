@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, {FC, useEffect, useState} from 'react'
 
 import { Input } from '../../../'
 import TablePanel from '../TablePanel/TablePanel'
@@ -9,9 +9,10 @@ const TableBody: FC<any> = ({
   dataItems,
   rowsMax,
   multiSelect,
-  hideInput
+  hideInput,
+  isSelectedDefault
 }) => {
-  const [selectedId, setSelectedId] = useState()
+  const [selectedId, setSelectedId] = useState<number | null>(null)
   const [selectedIds, setSelectedIds] = useState<Array<number>>([])
 
   const isSelectedItem = (id): boolean => {
@@ -21,8 +22,19 @@ const TableBody: FC<any> = ({
     return id === selectedId
   }
 
+  useEffect(() => {
+    if(isSelectedDefault) {
+      return setSelectedId(0)
+    }
+
+    setSelectedId(null)
+    setSelectedIds([])
+  }, [dataItems])
+
   const onClickItem = (id): void => {
-    if (callback) callback()()
+    if (callback) {
+      callback()
+    }
 
     if(multiSelect) {
       if (selectedIds.includes(id)) {
@@ -52,6 +64,7 @@ const TableBody: FC<any> = ({
                 </Styled.CurrencyValue>:
                 <Input
                   isAutoFocus
+                  defaultValue={1}
                   placeholder='Enter a value'
                   type='number'
                   afterContent={abbreviation}

@@ -7,18 +7,21 @@ type TInput = {
   isAutoFocus?: boolean
   placeholder?: string
   type?: string
+  defaultValue?: number
 }
 
 const Input: FC<TInput> = ({
   afterContent,
   isAutoFocus,
   placeholder = '',
-  type = 'string'
+  type = 'string',
+  defaultValue
 }) => {
-  const [value, setValue] = useState(placeholder)
+  const [value, setValue] = useState(defaultValue || placeholder)
 
   const onChange = (e): void => {
     const { target: { value: inputVal } } = e
+
     if (!inputVal.length) {
       return setValue(placeholder)
     }
