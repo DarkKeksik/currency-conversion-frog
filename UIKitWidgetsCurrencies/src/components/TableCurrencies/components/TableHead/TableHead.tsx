@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren} from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import * as Styled from './TableHead.styled'
 
 type TypeTableHead = PropsWithChildren & {

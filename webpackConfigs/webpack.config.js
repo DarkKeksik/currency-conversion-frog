@@ -1,7 +1,12 @@
 const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const isDev = process.env.NODE_ENV === "development"
 
 module.exports = {
-  entry: './UIKitWidgetsCurrencies/index.js',
+  context: path.resolve(__dirname, '../UIKitWidgetsCurrencies'),
+  mode: isDev ? "development" : 'production',
+  entry: './index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, '../', 'build'),
@@ -17,5 +22,8 @@ module.exports = {
         exclude: /node_modules/
       },
     ]
-  }
+  },
+  plugins: [
+    isDev && new BundleAnalyzerPlugin()
+  ]
 }
