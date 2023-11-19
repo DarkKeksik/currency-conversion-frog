@@ -32,20 +32,23 @@ const TableBody: FC<any> = ({
   }, [dataItems])
 
   const onClickItem = (id): void => {
-    if (callback) {
-      callback()
-    }
-
     if(multiSelect) {
       if (selectedIds.includes(id)) {
         const clearedArr = selectedIds.filter((itemId) => !(itemId === id))
         return setSelectedIds(clearedArr)
       }
+
       return setSelectedIds([...selectedIds, id])
     }
 
     setSelectedId(id)
   }
+
+  useEffect(() => {
+    if (callback) {
+      callback(Boolean(selectedId || selectedIds.length))
+    }
+  }, [callback, selectedId, selectedIds])
 
   return (
     <Styled.TableBody>
@@ -70,7 +73,6 @@ const TableBody: FC<any> = ({
                   afterContent={abbreviation}
                 />
               }
-
             </Styled.ItemSelected>
           )
         }

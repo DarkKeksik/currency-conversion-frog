@@ -24,7 +24,7 @@ const Input: FC<TInput> = ({
   const onChange = (e): void => {
     const { target: { value: inputVal } } = e
 
-    if (!inputVal.length) {
+    if (inputVal.length == 0) {
       return setValue(placeholder)
     }
 

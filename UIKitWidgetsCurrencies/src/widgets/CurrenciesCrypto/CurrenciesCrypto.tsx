@@ -53,11 +53,11 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
 
   const [isVisibleStatistic, setIsVisibleStatistic] = useState(isVisibleStatisticCharts)
 
-  const getStatistic = () => {
-    setIsVisibleStatistic(true)
+  const getStatistic = (isVisible) => {
+    setIsVisibleStatistic(isVisible)
   }
 
-  const onClickChangeTable = () => {
+  const onClickChangeTables = () => {
     setDataTables([dataTables[1], dataTables[0]])
     setIsVisibleStatistic(false)
   }
@@ -82,7 +82,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>
 
-        <Styled.ButtonChangeTable onClick={onClickChangeTable}>
+        <Styled.ButtonChangeTable onClick={onClickChangeTables}>
           <IconDoubleArrows size={25} fill='#d1d6dd' />
         </Styled.ButtonChangeTable>
 
