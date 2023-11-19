@@ -20,7 +20,7 @@ const IconDoubleArrows:FC<TIconDoubleArrows> = ({
       xmlns="http://www.w3.org/2000/svg"
       width={size || sizeDefault.width}
       height={size || sizeDefault.height}
-      viewBox={`0 0 ${size || sizeDefault.width} ${size || sizeDefault.height}`}
+      viewBox="0 0 32 32"
     >
       <g transform="matrix(0.4326362516 0 0 0.3796153157 14.9592982136 15)" id="0hcwmv2Xyx0_mQ1wl3Qc5">
         <path

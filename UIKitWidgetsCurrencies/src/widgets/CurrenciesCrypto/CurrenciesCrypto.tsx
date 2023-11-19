@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react'
 
 import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts, Input } from '../../components'
-import { IconDoubleArrows } from '../../icons'
+import { IconDoubleArrows, IconSearch } from '../../icons'
 import * as Styled from './CurrenciesCrypto.styled'
 
 type TCurrenciesCrypto = {
@@ -30,13 +30,15 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   const [dataTables, setDataTables] = useState([
     {
       title: 'World currencies',
-      inputSearchPlaceholder: 'Search currency',
+      inputSearchIcon: <IconSearch fill='#fff' size={14} />,
+      inputSearchPlaceholder: 'Search',
       inputSearchType: 'string',
       dataCurrencies: dataCurrenciesStable
     },
     {
       title: 'Cryptocurrencies',
-      inputSearchPlaceholder: 'Search cryptocurrency',
+      inputSearchIcon: <IconSearch fill='#fff' size={14} />,
+      inputSearchPlaceholder: 'Search',
       inputSearchType: 'string',
       dataCurrencies: dataCurrenciesCrypto
     }
@@ -56,7 +58,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   }
 
   const onClickChangeTable = () => {
-    setDataTables([...dataTables].reverse())
+    setDataTables([dataTables[1], dataTables[0]])
     setIsVisibleStatistic(false)
   }
 
@@ -73,6 +75,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           <TableCurrenciesParts.TableHead>
             <b>{dataTables[0].title}</b>
             <Input
+              Icon={dataTables[0].inputSearchIcon}
               type={dataTables[0].inputSearchType}
               placeholder={dataTables[0].inputSearchPlaceholder}
             />
@@ -80,7 +83,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         </TableCurrencies>
 
         <Styled.ButtonChangeTable onClick={onClickChangeTable}>
-          <IconDoubleArrows fill='#d1d6dd' />
+          <IconDoubleArrows size={25} fill='#d1d6dd' />
         </Styled.ButtonChangeTable>
 
         <TableCurrencies
@@ -93,6 +96,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
           <TableCurrenciesParts.TableHead>
             <b>{dataTables[1].title}</b>
             <Input
+              Icon={dataTables[1].inputSearchIcon}
               type={dataTables[1].inputSearchType}
               placeholder={dataTables[1].inputSearchPlaceholder}
             />

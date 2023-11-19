@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, {FC, ReactNode, useState} from 'react'
 
 import * as Styled from './Input.styled'
 
@@ -8,6 +8,7 @@ type TInput = {
   placeholder?: string
   type?: string
   defaultValue?: number
+  Icon?: ReactNode
 }
 
 const Input: FC<TInput> = ({
@@ -15,7 +16,8 @@ const Input: FC<TInput> = ({
   isAutoFocus,
   placeholder = '',
   type = 'string',
-  defaultValue
+  defaultValue,
+  Icon
 }) => {
   const [value, setValue] = useState(defaultValue || placeholder)
 
@@ -38,7 +40,7 @@ const Input: FC<TInput> = ({
         afterContent={value === placeholder ? '...' : afterContent}
       />
       <Styled.InputVisible>
-        {value}
+        { Icon }{ value }
       </Styled.InputVisible>
     </Styled.Wrap>
   )

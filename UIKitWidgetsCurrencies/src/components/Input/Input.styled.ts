@@ -14,6 +14,7 @@ export const Wrap = styled.label`
 export const InputVisible = styled.div`
   display: flex;
   align-items: center;
+  gap: 5px;
   width: 100%;
   height: 100%;
   padding: 0 .5rem;
@@ -40,7 +41,6 @@ export const InputHide = styled.input<{afterContent: string}>`
 
   &:focus + ${ InputVisible }:after {
     content: '${({afterContent}) => afterContent || '...'}';
-    margin-left: 4px;
     animation: .8s infinite alternate-reverse ${ animationBlink };
   }
 `
