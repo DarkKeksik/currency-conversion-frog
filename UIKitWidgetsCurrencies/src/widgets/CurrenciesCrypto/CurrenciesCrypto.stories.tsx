@@ -62,6 +62,7 @@ export const CustomProps = {
     isWidgetTitle: true,
     rowsMaxStable: 2,
     rowsMaxCrypto: 2,
+    size: 'm'
   },
 }
 

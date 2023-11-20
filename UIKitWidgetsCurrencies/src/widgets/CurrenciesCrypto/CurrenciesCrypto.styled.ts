@@ -1,16 +1,35 @@
-import styled, { keyframes } from 'styled-components'
+import styled, {css, keyframes} from 'styled-components'
+
+type TWrap = {
+  size?: string
+}
 
 const animationBottomTop = keyframes`
   0% { transform: translateY(-100%) }
   1000% { transform: translateY(0) }
 `
 
-export const Wrap = styled.div`
+export const Wrap = styled.div<TWrap>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
   background: #232a37;
+  
+  max-width: ${({size}) => {
+    switch (size) {
+      case 's':
+        return '640px'
+      case 'm':
+        return '1024px'
+      case 'l':
+        return '1280px'
+      default:
+        return 'auto'
+    }
+  }};
+  
+  ${({size}) => size && css`margin: 0 auto`};
 `
 
 export const WrapTables = styled.div`

@@ -6,6 +6,9 @@ import { AnimationSlideTo } from '../../animations'
 
 import * as Styled from './CurrenciesCrypto.styled'
 
+// @TODO Needs to be moved to a reusable type file
+type TSizes = 's' | 'm' | 'l'
+
 type TCurrenciesCrypto = {
   widgetTitle: string,
   isWidgetTitle?: boolean,
@@ -16,6 +19,7 @@ type TCurrenciesCrypto = {
   rowsMaxCrypto?: number
   isVisibleStatisticCharts?: boolean
   hasStatisticBlock?: boolean
+  size?: TSizes
 }
 
 const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
@@ -27,7 +31,8 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   rowsMaxStable,
   rowsMaxCrypto,
   isVisibleStatisticCharts,
-  hasStatisticBlock
+  hasStatisticBlock,
+  size
 }) => {
   const [dataTables, setDataTables] = useState([
     {
@@ -65,7 +70,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   }
 
   return (
-    <Styled.Wrap>
+    <Styled.Wrap size={size}>
       {isWidgetTitle && <WidgetTitle title={widgetTitle ?? 'Cryptocurrency converter'} />}
 
       <Styled.WrapTables>
@@ -106,6 +111,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         </TableCurrencies>
       </Styled.WrapTables>
 
+      {/*@TODO need fix animation charts because of isVisibleStatistic*/}
       {hasStatisticBlock && isVisibleStatistic && (
         <AnimationSlideTo>
           <StatisticCharts
