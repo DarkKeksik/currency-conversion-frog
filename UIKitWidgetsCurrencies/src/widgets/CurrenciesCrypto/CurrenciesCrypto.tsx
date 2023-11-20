@@ -2,6 +2,8 @@ import React, {FC, useState} from 'react'
 
 import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts, Input } from '../../components'
 import { IconDoubleArrows, IconSearch } from '../../icons'
+import { AnimationSlideTo } from '../../animations'
+
 import * as Styled from './CurrenciesCrypto.styled'
 
 type TCurrenciesCrypto = {
@@ -105,10 +107,12 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
       </Styled.WrapTables>
 
       {hasStatisticBlock && isVisibleStatistic && (
-        <StatisticCharts
-          title='Growth charts'
-          dataDescription={dataStatistic}
-        />
+        <AnimationSlideTo>
+          <StatisticCharts
+            title='Growth charts'
+            dataDescription={dataStatistic}
+          />
+        </AnimationSlideTo>
       )}
     </Styled.Wrap>
   )

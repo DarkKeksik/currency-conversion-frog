@@ -1,4 +1,9 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const animationBottomTop = keyframes`
+  0% { transform: translateY(-100%) }
+  1000% { transform: translateY(0) }
+`
 
 export const Wrap = styled.div`
   display: flex;
@@ -28,4 +33,12 @@ export const ButtonChangeTable = styled.a`
   &:hover {
     box-shadow: 15px 0 10px inset #2b4a51;
   }
+`
+
+export const AnimationWrap = styled.div`
+  overflow: hidden;
+`
+
+export const AnimationBottomTop = styled.div`
+  animation: 1.5s ${ animationBottomTop };
 `

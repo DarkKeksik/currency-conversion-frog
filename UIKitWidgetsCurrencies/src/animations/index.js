@@ -1,0 +1,1 @@
+export { default as AnimationSlideTo } from './AnimationSlideTo/AnimationSlideTo'
