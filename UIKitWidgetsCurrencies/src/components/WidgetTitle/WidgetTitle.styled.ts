@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { colors } from '../../styles'
+
 export const WidgetTitle = styled.div`
   display: flex;
   justify-content: center;
@@ -7,5 +9,5 @@ export const WidgetTitle = styled.div`
   font-size: 1.8rem;
   letter-spacing: 2px;
   font-weight: 700;
-  color: #d1d6dd;
+  color: ${ colors.white["5"] };
 `

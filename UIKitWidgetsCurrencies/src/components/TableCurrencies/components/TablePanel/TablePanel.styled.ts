@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components'
 
+import { colors } from '../../../../styles'
+
 export const TablePanel = styled.div`
   display: flex;
   gap: .3rem;
   padding: .5rem;
-  background: #1d2634;
+  background: ${colors.blue["20"]};
   color: white;
 `
 
@@ -17,14 +19,16 @@ export const PanelItem = styled.p<{isActive?: boolean}>`
   height: 1.4rem;
   border-radius: 3px;
   font-size: 12px;
-  cursor: pointer;
   transition-duration: .3s;
-
-  &:hover {
-    background-color: #2b4a51;
-  }
   
-  ${({ isActive }) => isActive && css`
-    background: #26ad8d;
-  `}
+  ${({ isActive }) => isActive ?
+    css`
+      background: ${colors.green["10"]};
+    ` :
+    css`
+      &:hover {
+        background-color: ${colors.green["5"]};
+        cursor: pointer;
+      }`
+    }
 `

@@ -1,8 +1,9 @@
 import styled from "styled-components"
+import { colors } from "../../../../styles";
 
 export const TableBody = styled.div`
   letter-spacing: 1px;
-  background: #2b3947;
+  background: ${ colors.blue["10"] };
 `
 
 export const WrapName = styled.div`
@@ -13,19 +14,19 @@ export const WrapName = styled.div`
 
 export const CurrencyName = styled.span`
   font-size: 14px;
-  color: #d1d6dd;
+  color: ${ colors.white["5"] };
 `
 
 export const CurrencyAbbreviation = styled.span`
   font-size: 12px;
-  color: #566373;
+  color: ${ colors.white["45"] };
 `
 
 export const CurrencyChange = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: #479c83;
+  color: ${ colors.green["10"] };
 `
 
 export const CurrencyValue = styled.span`
@@ -34,7 +35,7 @@ export const CurrencyValue = styled.span`
   padding: 5px 10px;
   font-size: 14px;
   border-radius: 4px;
-  color: #d1d6dd;
+  color: ${ colors.white["5"] };
 `
 
 export const Item = styled.div`
@@ -43,7 +44,7 @@ export const Item = styled.div`
   transition-duration: .3s;
 
   &:hover {
-    background-color: #2b4a51;
+    background-color: ${ colors.green["5"] };
   }
 `
 
@@ -51,11 +52,10 @@ export const ItemSelected = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   padding: 1em 1.8em;
-  box-shadow: 0 3px 4px #1d2634;
-  background: #26ad8d;
+  background: ${ colors.green["10"] };
+  box-shadow: 0 5px 6px ${ colors.blue["15"] };
   
-  // @TODO have to fix build styled-components 
   ${ WrapName } {
-    border-right: 2px solid #2b3947;
+    border-right: 2px solid ${ colors.blue["10"] };
   }
 `

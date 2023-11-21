@@ -55,7 +55,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     title: 'Changes "BTC/EUR',
     subtitle: 'over 6 months',
     items: ['25119.40 USD', '34974.40 USD'],
-    rateChange: '+15.3%'
+    rateChange: '15.3%'
   })
 
   const [isVisibleStatistic, setIsVisibleStatistic] = useState(isVisibleStatisticCharts)
@@ -111,7 +111,6 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         </TableCurrencies>
       </Styled.WrapTables>
 
-      {/*@TODO need fix animation charts because of isVisibleStatistic*/}
       {hasStatisticBlock && isVisibleStatistic && (
         <AnimationSlideTo>
           <StatisticCharts

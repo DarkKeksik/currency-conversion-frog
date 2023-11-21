@@ -11,7 +11,6 @@ const TableHead: FC<TypeTableHead> = ({ children, title }) => {
       {children ?? (
         <>
           <Styled.Title>{ title }</Styled.Title>
-          <Styled.CurrencySearch>Search...</Styled.CurrencySearch>
         </>
       )}
     </Styled.Head>

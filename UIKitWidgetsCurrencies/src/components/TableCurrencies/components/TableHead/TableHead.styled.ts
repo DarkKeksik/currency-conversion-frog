@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { colors } from '../../../../styles'
+
 export const Head = styled.div`
   display: flex;
   gap: 5px;
@@ -7,14 +9,10 @@ export const Head = styled.div`
   padding: 1em;
   font-size: 18px;
   letter-spacing: 1px;
-  color: #d1d6dd;
-  background: #1d2634;
+  color: ${ colors.white["5"] };
+  background: ${ colors.blue["25"] };
 `
 
 export const Title = styled.p`
   font-weight: 700;
-`
-
-export const CurrencySearch = styled.p`
-  color: #566373;
 `

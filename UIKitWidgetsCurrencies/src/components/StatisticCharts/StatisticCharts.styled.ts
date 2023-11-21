@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { colors } from '../../styles'
+
 export const ChartsGrowth = styled.div`
   display: flex;
   flex-direction: column;
@@ -26,9 +28,9 @@ export const WrapCharts = styled.div`
 export const StatisticCharts = styled.div`
   display: grid;
   grid-template-columns: minmax(300px, 0.5fr) 1fr;
+  background: ${ colors.blue["10"] };
+  color: ${ colors.white["5"] };
+  box-shadow: 0 -5px 8px -6px ${ colors.blue["25"] };
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 -5px 8px -6px #0000009e;
-  background: #2b3947;
-  color: #d1d6dd;
 `

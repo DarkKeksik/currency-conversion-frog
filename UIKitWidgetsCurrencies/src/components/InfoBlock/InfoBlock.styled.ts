@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { colors } from '../../styles'
+
 export const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@ export const InfoBlock = styled.div`
   align-items: center;
   padding: 1.5rem;
   gap: 1rem;
-  background: #1d2634;
+  background: ${ colors.blue["25"] };
 `
 
 export const Title = styled.p`
@@ -42,10 +44,9 @@ export const Col = styled.div`
 export const RateChange = styled.p<{isRising: boolean}>`
   font-size: 1.5rem;
   font-weight: 700;
-  color: ${({isRising}) => isRising ? '#26ad8d' : '#fe7079'};
+  color: ${({isRising}) => isRising ? colors.green["15"] : colors.red["5"]};
 
-  // @TODO Can't compile, guess problem with swc, probable need make config for styled files
-  // &:before {
-    //   content: ${({isRising}) => isRising ? '+' : '-'};
-  // }
+  &:before {
+      content: '${({isRising}) => isRising ? '+' : '-'}';
+  }
 `

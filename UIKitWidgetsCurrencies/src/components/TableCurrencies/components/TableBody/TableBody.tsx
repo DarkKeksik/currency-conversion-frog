@@ -52,40 +52,42 @@ const TableBody: FC<any> = ({
 
   return (
     <Styled.TableBody>
-      {dataItems.map(({name, abbreviation, value, isSelected}, id) => {
-        if (isSelectedItem(id)) {
+      {dataItems
+        .slice(0, rowsMax)
+        .map(({name, abbreviation, value, isSelected}, id) => {
+          if (isSelectedItem(id)) {
+            return (
+              <Styled.ItemSelected onClick={() => onClickItem(id)} key={id}>
+                <Styled.WrapName>
+                  <Styled.CurrencyName>{name}</Styled.CurrencyName>
+                  <Styled.CurrencyAbbreviation>{abbreviation}</Styled.CurrencyAbbreviation>
+                </Styled.WrapName>
+
+                {hideInput ?
+                  <Styled.CurrencyValue>
+                    { (Math.random() * 10).toFixed(6) }
+                  </Styled.CurrencyValue>:
+                  <Input
+                    isAutoFocus
+                    defaultValue={1}
+                    placeholder='Enter a value'
+                    type='number'
+                    afterContent={abbreviation}
+                  />
+                }
+              </Styled.ItemSelected>
+            )
+          }
+
           return (
-            <Styled.ItemSelected onClick={() => onClickItem(id)} key={id}>
+            <Styled.Item onClick={() => onClickItem(id)} key={id}>
               <Styled.WrapName>
                 <Styled.CurrencyName>{name}</Styled.CurrencyName>
                 <Styled.CurrencyAbbreviation>{abbreviation}</Styled.CurrencyAbbreviation>
               </Styled.WrapName>
-
-              {hideInput ?
-                <Styled.CurrencyValue>
-                  { (Math.random() * 10).toFixed(6) }
-                </Styled.CurrencyValue>:
-                <Input
-                  isAutoFocus
-                  defaultValue={1}
-                  placeholder='Enter a value'
-                  type='number'
-                  afterContent={abbreviation}
-                />
-              }
-            </Styled.ItemSelected>
+            </Styled.Item>
           )
-        }
-
-        return (
-          <Styled.Item onClick={() => onClickItem(id)} key={id}>
-            <Styled.WrapName>
-              <Styled.CurrencyName>{name}</Styled.CurrencyName>
-              <Styled.CurrencyAbbreviation>{abbreviation}</Styled.CurrencyAbbreviation>
-            </Styled.WrapName>
-          </Styled.Item>
-        )
-      })}
+        })}
 
       {dataItems.length > rowsMax && <TablePanel />}
     </Styled.TableBody>

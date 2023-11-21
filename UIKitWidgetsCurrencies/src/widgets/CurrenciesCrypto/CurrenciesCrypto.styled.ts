@@ -1,20 +1,17 @@
-import styled, {css, keyframes} from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { colors } from "../../styles"
 
 type TWrap = {
   size?: string
 }
-
-const animationBottomTop = keyframes`
-  0% { transform: translateY(-100%) }
-  1000% { transform: translateY(0) }
-`
 
 export const Wrap = styled.div<TWrap>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  background: #232a37;
+  background: ${ colors.blue["30"] };
   
   max-width: ${({size}) => {
     switch (size) {
@@ -52,12 +49,4 @@ export const ButtonChangeTable = styled.a`
   &:hover {
     box-shadow: 15px 0 10px inset #2b4a51;
   }
-`
-
-export const AnimationWrap = styled.div`
-  overflow: hidden;
-`
-
-export const AnimationBottomTop = styled.div`
-  animation: 1.5s ${ animationBottomTop };
 `
