@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useState} from 'react'
+import React, { FC, ReactNode, useEffect, useState } from 'react'
 
 import * as Styled from './Input.styled'
 
@@ -19,17 +19,21 @@ const Input: FC<TInput> = ({
   defaultValue,
   Icon
 }) => {
-  const [value, setValue] = useState(defaultValue || placeholder)
+  const [value, setValue] = useState<number | string>('')
 
   const onChange = (e): void => {
     const { target: { value: inputVal } } = e
 
-    if (inputVal.length == 0) {
-      return setValue(placeholder)
+    if (inputVal.length === 0) {
+      return setValue(defaultValue || placeholder)
     }
 
     setValue(inputVal)
   }
+
+  useEffect(() => {
+    setValue(defaultValue || placeholder)
+  }, [defaultValue, placeholder])
 
   return (
     <Styled.Wrap>

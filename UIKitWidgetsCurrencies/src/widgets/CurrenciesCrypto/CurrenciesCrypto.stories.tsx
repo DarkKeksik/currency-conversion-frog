@@ -30,7 +30,25 @@ export const DefaultProps = {
         abbreviation: 'TRX/EUR',
         price: 0.09351,
         change: '+6%'
-      }
+      },
+      {
+        name: 'Bitcoin',
+        abbreviation: 'BTC/EUR',
+        price: 33.839,
+        change: '+3%'
+      },
+      {
+        name: 'Ethereum',
+        abbreviation: 'ETH/EUR',
+        price: 1781.15,
+        change: '+1%'
+      },
+      {
+        name: 'Tether USDt',
+        abbreviation: 'TRX/EUR',
+        price: 0.09351,
+        change: '+6%'
+      },
     ],
     dataCurrenciesStable: [
       {

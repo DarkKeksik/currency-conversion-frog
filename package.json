@@ -2,7 +2,7 @@
   "name": "ui-kit-widgets-currencies",
   "version": "1.0.0",
   "description": "This repository can help you show currencies widgets in your application.",
-  "main": "UIKitWidgetsCurrencies/index.js",
+  "main": "build/ui-kit-widgets-currencies.js",
   "author": "Sychevskiy Ilya <1fogfrog1@gmail.com>",
   "license": "MIT",
   "private": true,

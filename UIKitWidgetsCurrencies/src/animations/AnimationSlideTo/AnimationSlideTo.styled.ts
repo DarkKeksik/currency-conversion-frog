@@ -14,6 +14,7 @@ export const Wrap = styled.div`
   overflow: hidden;
 `
 
+// @TODO need logic fot direction
 export const AnimationBlock = styled.div<{duration?: string, direction?: string}>`
   animation:
           ${({ duration }) => duration || '1s'}

@@ -1,7 +1,6 @@
-import React, {FC, useEffect, useState} from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import { Input } from '../../../'
-import TablePanel from '../TablePanel/TablePanel'
 import * as Styled from './TableBody.styled'
 
 const TableBody: FC<any> = ({
@@ -88,8 +87,6 @@ const TableBody: FC<any> = ({
             </Styled.Item>
           )
         })}
-
-      {dataItems.length > rowsMax && <TablePanel />}
     </Styled.TableBody>
   )
 }

@@ -2,6 +2,7 @@ import React, {FC, PropsWithChildren} from 'react'
 
 import { TableHead, TableBody } from './components'
 import * as Styled from './TableCurrencies.styled'
+import TablePanel from "./components/TablePanel/TablePanel";
 
 type TypeTableCurrencies = PropsWithChildren & {
   dataItems: any
@@ -10,7 +11,8 @@ type TypeTableCurrencies = PropsWithChildren & {
   multiSelect?: boolean
   hideInput?: boolean
   isSelectedDefault?: boolean
-  callback?: () => void
+  callbackItem?: () => void
+  callbackPagination?: () => void
 }
 
 const TableCurrencies: FC<TypeTableCurrencies> = ({
@@ -21,7 +23,8 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
   multiSelect = false,
   hideInput,
   isSelectedDefault,
-  callback
+  callbackItem,
+  callbackPagination
 }) => {
   return (
     <Styled.TableCurrencies>
@@ -32,8 +35,16 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
         rowsMax={rowsMax}
         hideInput={hideInput}
         isSelectedDefault={isSelectedDefault}
-        callback={callback}
+        callback={callbackItem}
       />
+      {dataItems.length > rowsMax && (
+        <TablePanel
+          quantity={34}
+          paginationCurrent={1}
+          itemsLength={dataItems.length}
+          paginationMax={23}
+        />
+      )}
     </Styled.TableCurrencies>
   )
 }

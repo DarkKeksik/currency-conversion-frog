@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 
 import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts, Input } from '../../components'
 import { IconDoubleArrows, IconSearch } from '../../icons'
@@ -34,22 +34,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   hasStatisticBlock,
   size
 }) => {
-  const [dataTables, setDataTables] = useState([
-    {
-      title: 'World currencies',
-      inputSearchIcon: <IconSearch fill='#fff' size={14} />,
-      inputSearchPlaceholder: 'Search',
-      inputSearchType: 'string',
-      dataCurrencies: dataCurrenciesStable
-    },
-    {
-      title: 'Cryptocurrencies',
-      inputSearchIcon: <IconSearch fill='#fff' size={14} />,
-      inputSearchPlaceholder: 'Search',
-      inputSearchType: 'string',
-      dataCurrencies: dataCurrenciesCrypto
-    }
-  ])
+  const [dataTables, setDataTables] = useState([])
 
   const [ dataStatistic, setDataStatistic ] = useState({
     title: 'Changes "BTC/EUR',
@@ -69,6 +54,28 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     setIsVisibleStatistic(false)
   }
 
+  // @TODO
+  useEffect(() => {
+    setDataTables([
+      {
+        title: 'World currencies',
+        inputSearchIcon: <IconSearch fill='#fff' size={14} />,
+        inputSearchPlaceholder: 'Search',
+        inputSearchType: 'string',
+        dataCurrencies: dataCurrenciesStable,
+        rowsMax: rowsMaxStable
+      },
+      {
+        title: 'Cryptocurrencies',
+        inputSearchIcon: <IconSearch fill='#fff' size={14} />,
+        inputSearchPlaceholder: 'Search',
+        inputSearchType: 'string',
+        dataCurrencies: dataCurrenciesCrypto,
+        rowsMax: rowsMaxCrypto || rowsMax
+      }
+    ])
+  }, [dataCurrenciesCrypto, rowsMaxCrypto, rowsMaxStable, rowsMax])
+
   return (
     <Styled.Wrap size={size}>
       {isWidgetTitle && <WidgetTitle title={widgetTitle ?? 'Cryptocurrency converter'} />}
@@ -76,15 +83,15 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
       <Styled.WrapTables>
         <TableCurrencies
           isSelectedDefault
-          rowsMax={rowsMaxStable || rowsMax}
-          dataItems={dataTables[0].dataCurrencies}
+          rowsMax={dataTables[0]?.rowsMax}
+          dataItems={dataTables[0]?.dataCurrencies}
         >
           <TableCurrenciesParts.TableHead>
-            <b>{dataTables[0].title}</b>
+            <b>{dataTables[0]?.title}</b>
             <Input
-              Icon={dataTables[0].inputSearchIcon}
-              type={dataTables[0].inputSearchType}
-              placeholder={dataTables[0].inputSearchPlaceholder}
+              Icon={dataTables[0]?.inputSearchIcon}
+              type={dataTables[0]?.inputSearchType}
+              placeholder={dataTables[0]?.inputSearchPlaceholder}
             />
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>
@@ -94,18 +101,18 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         </Styled.ButtonChangeTable>
 
         <TableCurrencies
-          dataItems={dataTables[1].dataCurrencies}
-          rowsMax={rowsMaxCrypto || rowsMax}
+          dataItems={dataTables[1]?.dataCurrencies}
+          rowsMax={dataTables[1]?.rowsMax}
           multiSelect
           hideInput
-          callback={getStatistic}
+          callbackItem={getStatistic}
         >
           <TableCurrenciesParts.TableHead>
-            <b>{dataTables[1].title}</b>
+            <b>{dataTables[1]?.title}</b>
             <Input
-              Icon={dataTables[1].inputSearchIcon}
-              type={dataTables[1].inputSearchType}
-              placeholder={dataTables[1].inputSearchPlaceholder}
+              Icon={dataTables[1]?.inputSearchIcon}
+              type={dataTables[1]?.inputSearchType}
+              placeholder={dataTables[1]?.inputSearchPlaceholder}
             />
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>

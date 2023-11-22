@@ -4,10 +4,20 @@ import { colors } from '../../../../styles'
 
 export const TablePanel = styled.div`
   display: flex;
-  gap: .3rem;
-  padding: .5rem;
-  background: ${colors.blue["20"]};
+  align-items: end;
+  gap: .8rem;
+  padding: .4rem;
   color: white;
+  background: ${colors.blue["20"]};
+`
+
+export const TableBody = styled.div`
+  display: flex;
+  gap: .3rem;
+`
+
+export const Delimiter = styled.p`
+
 `
 
 export const PanelItem = styled.p<{isActive?: boolean}>`

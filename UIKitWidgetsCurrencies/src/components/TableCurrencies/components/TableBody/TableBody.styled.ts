@@ -2,8 +2,10 @@ import styled from "styled-components"
 import { colors } from "../../../../styles";
 
 export const TableBody = styled.div`
+  flex: 1 0 0;
   letter-spacing: 1px;
-  background: ${ colors.blue["10"] };
+  border: 2px solid ${ colors.blue["20"] };
+  border-radius: 5px;
 `
 
 export const WrapName = styled.div`
@@ -39,8 +41,9 @@ export const CurrencyValue = styled.span`
 `
 
 export const Item = styled.div`
-  padding: 1em 1.8em;
+  padding: 1em 1.5em;
   cursor: pointer;
+  background: ${ colors.blue["10"] };
   transition-duration: .3s;
 
   &:hover {
@@ -51,7 +54,7 @@ export const Item = styled.div`
 export const ItemSelected = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  padding: 1em 1.8em;
+  padding: 1em 1.5em;
   background: ${ colors.green["10"] };
   box-shadow: 0 5px 6px ${ colors.blue["15"] };
   
