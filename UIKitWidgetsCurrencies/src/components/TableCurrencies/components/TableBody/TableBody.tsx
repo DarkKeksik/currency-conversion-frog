@@ -5,7 +5,7 @@ import * as Styled from './TableBody.styled'
 
 const TableBody: FC<any> = ({
   callback,
-  dataItems,
+  dataItems = [],
   rowsMax,
   multiSelect,
   hideInput,
@@ -25,6 +25,9 @@ const TableBody: FC<any> = ({
     if(isSelectedDefault) {
       return setSelectedId(0)
     }
+
+
+    console.log('dataItems', dataItems)
 
     setSelectedId(null)
     setSelectedIds([])
@@ -49,17 +52,20 @@ const TableBody: FC<any> = ({
     }
   }, [callback, selectedId, selectedIds])
 
+  if(!dataItems.length) {
+    return <div>Loading...</div>
+  }
+
   return (
     <Styled.TableBody>
       {dataItems
-        .slice(0, rowsMax)
-        .map(({name, abbreviation, value, isSelected}, id) => {
+        .map(({baseAsset, name, abbreviation, value, isSelected}, id) => {
           if (isSelectedItem(id)) {
             return (
               <Styled.ItemSelected onClick={() => onClickItem(id)} key={id}>
                 <Styled.WrapName>
-                  <Styled.CurrencyName>{name}</Styled.CurrencyName>
-                  <Styled.CurrencyAbbreviation>{abbreviation}</Styled.CurrencyAbbreviation>
+                  <Styled.CurrencyName>{name || abbreviation}</Styled.CurrencyName>
+                  <Styled.CurrencyAbbreviation>{abbreviation || baseAsset}</Styled.CurrencyAbbreviation>
                 </Styled.WrapName>
 
                 {hideInput ?
@@ -81,8 +87,8 @@ const TableBody: FC<any> = ({
           return (
             <Styled.Item onClick={() => onClickItem(id)} key={id}>
               <Styled.WrapName>
-                <Styled.CurrencyName>{name}</Styled.CurrencyName>
-                <Styled.CurrencyAbbreviation>{abbreviation}</Styled.CurrencyAbbreviation>
+                {(name || abbreviation) && <Styled.CurrencyName>{name || abbreviation}</Styled.CurrencyName>}
+                {(baseAsset || abbreviation) && <Styled.CurrencyAbbreviation>{abbreviation || baseAsset}</Styled.CurrencyAbbreviation>}
               </Styled.WrapName>
             </Styled.Item>
           )

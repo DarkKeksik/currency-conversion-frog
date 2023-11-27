@@ -3,6 +3,7 @@ import React, {FC, useEffect, useState} from 'react'
 import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts, Input } from '../../components'
 import { IconDoubleArrows, IconSearch } from '../../icons'
 import { AnimationSlideTo } from '../../animations'
+import { useCryptocurrenciesData } from '../../hooks/commons'
 
 import * as Styled from './CurrenciesCrypto.styled'
 
@@ -34,8 +35,8 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   hasStatisticBlock,
   size
 }) => {
-  const [dataTables, setDataTables] = useState([])
-
+  const currencies = useCryptocurrenciesData()
+  const [ dataTables, setDataTables ] = useState([])
   const [ dataStatistic, setDataStatistic ] = useState({
     title: 'Changes "BTC/EUR',
     subtitle: 'over 6 months',
@@ -63,18 +64,19 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
         dataCurrencies: dataCurrenciesStable,
-        rowsMax: rowsMaxStable
+        rowsMax: rowsMaxStable || rowsMax
       },
       {
         title: 'Cryptocurrencies',
         inputSearchIcon: <IconSearch fill='#fff' size={14} />,
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
-        dataCurrencies: dataCurrenciesCrypto,
+        dataCurrencies: currencies,
+        onPagination: () => {},
         rowsMax: rowsMaxCrypto || rowsMax
       }
     ])
-  }, [dataCurrenciesCrypto, rowsMaxCrypto, rowsMaxStable, rowsMax])
+  }, [rowsMaxCrypto, rowsMaxStable, rowsMax, currencies])
 
   return (
     <Styled.Wrap size={size}>

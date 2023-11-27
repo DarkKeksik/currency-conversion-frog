@@ -52,20 +52,25 @@ export const DefaultProps = {
     ],
     dataCurrenciesStable: [
       {
+        name: 'Russian ruble',
+        abbreviation: 'RUB'
+      },
+      {
         name: 'United States dollar',
-        abbreviation: 'USD',
-        price: 33.839
+        abbreviation: 'USD'
       },
       {
         name: 'Euro',
-        abbreviation: 'EUR',
-        price: 1781.15,
+        abbreviation: 'EUR'
       },
       {
         name: 'Pound sterling',
-        abbreviation: 'GBP',
-        price: 0.09351
-      }
+        abbreviation: 'GBP'
+      },
+      {
+        name: 'Turkish lira',
+        abbreviation: 'TRY'
+      },
     ],
     rowsMax: 5,
     rowsMaxStable: 3,

@@ -5,8 +5,7 @@
       "parser": {
         "syntax": "typescript",
         "tsx": true,
-        "dynamicImport": true,
-        "loose": true
+        "dynamicImport": true
       },
       "target": "es5",
     }

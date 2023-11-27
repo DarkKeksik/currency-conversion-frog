@@ -15,11 +15,19 @@ export const WrapName = styled.div`
 `
 
 export const CurrencyName = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
   font-size: 14px;
   color: ${ colors.white["5"] };
 `
 
 export const CurrencyAbbreviation = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
   font-size: 12px;
   color: ${ colors.white["45"] };
 `

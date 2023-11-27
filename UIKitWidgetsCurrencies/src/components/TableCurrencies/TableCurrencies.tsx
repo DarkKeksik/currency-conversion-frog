@@ -1,8 +1,9 @@
-import React, {FC, PropsWithChildren} from 'react'
+import React, { FC, PropsWithChildren, useState } from 'react'
 
-import { TableHead, TableBody } from './components'
+import { TableHead, TableBody, TablePanel } from './components'
+import { usePaginationData } from "../../hooks/commons";
+
 import * as Styled from './TableCurrencies.styled'
-import TablePanel from "./components/TablePanel/TablePanel";
 
 type TypeTableCurrencies = PropsWithChildren & {
   dataItems: any
@@ -26,12 +27,15 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
   callbackItem,
   callbackPagination
 }) => {
+  const [pageCurrent, setPageCurrent] = useState(1)
+  const [data, totalPages] = usePaginationData(dataItems, pageCurrent, rowsMax)
+
   return (
     <Styled.TableCurrencies>
       {children ?? <TableHead title={title} />}
       <TableBody
         multiSelect={multiSelect}
-        dataItems={dataItems}
+        dataItems={data}
         rowsMax={rowsMax}
         hideInput={hideInput}
         isSelectedDefault={isSelectedDefault}
@@ -39,10 +43,11 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
       />
       {dataItems.length > rowsMax && (
         <TablePanel
-          quantity={34}
-          paginationCurrent={1}
+          pages={totalPages}
+          paginationPageCurrent={pageCurrent}
+          onPagination={setPageCurrent}
+          paginationTotal={3}
           itemsLength={dataItems.length}
-          paginationMax={23}
         />
       )}
     </Styled.TableCurrencies>
