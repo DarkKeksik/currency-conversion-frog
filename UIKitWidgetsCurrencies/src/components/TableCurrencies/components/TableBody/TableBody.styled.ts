@@ -27,6 +27,7 @@ export const CurrencyAbbreviation = styled.span`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex: 1 1 0;
   
   font-size: 12px;
   color: ${ colors.white["45"] };
@@ -49,6 +50,9 @@ export const CurrencyValue = styled.span`
 `
 
 export const Item = styled.div`
+  display: flex;
+  min-height: 70px;
+  box-sizing: border-box;
   padding: 1em 1.5em;
   cursor: pointer;
   background: ${ colors.blue["10"] };
@@ -63,6 +67,8 @@ export const ItemSelected = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   padding: 1em 1.5em;
+  min-height: 70px;
+  box-sizing: border-box;
   background: ${ colors.green["10"] };
   box-shadow: 0 5px 6px ${ colors.blue["15"] };
   

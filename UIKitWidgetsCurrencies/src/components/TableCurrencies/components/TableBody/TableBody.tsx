@@ -26,9 +26,6 @@ const TableBody: FC<any> = ({
       return setSelectedId(0)
     }
 
-
-    console.log('dataItems', dataItems)
-
     setSelectedId(null)
     setSelectedIds([])
   }, [dataItems])
@@ -77,7 +74,7 @@ const TableBody: FC<any> = ({
                     defaultValue={1}
                     placeholder='Enter a value'
                     type='number'
-                    afterContent={abbreviation}
+                    afterContent={abbreviation || baseAsset}
                   />
                 }
               </Styled.ItemSelected>
