@@ -12,6 +12,7 @@ export const useCryptocurrenciesData = () => {
   return currencies
 }
 
+// @TODO It is necessary to remove pagination from the frontend
 export const usePaginationData = (data, pageCurrency = 1, limit = 3) => {
   const [totalPages, setTotalPages] = useState<number>()
   const [dataPiece, setDataPiece] = useState([])

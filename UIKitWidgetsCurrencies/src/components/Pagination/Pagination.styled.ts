@@ -23,7 +23,7 @@ export const Item = styled.p<{isActive?: boolean}>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 1.4rem;
+  min-width: 1.4rem;
   height: 1.4rem;
   border-radius: 3px;
   font-size: 12px;
