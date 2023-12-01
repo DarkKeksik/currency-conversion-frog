@@ -34,17 +34,18 @@ export const WrapTables = styled.div`
   gap: 5px;
 `
 
-// @TODO 60px from table header need fix
 export const ButtonChangeTable = styled.a`
   display: flex;
-  margin-top: 60px;
-  align-self: center;
+  align-self: center;  
   border: 1px solid #2b3947;
   border-radius: 5px;
   padding: 2px;
   box-shadow: -15px 0 10px inset #2b4a51;
   cursor: pointer;
   transition-duration: .3s;
+
+  // @TODO from header and table of bottom 
+  margin: 57px 0 41px 0;
   
   &:hover {
     box-shadow: 15px 0 10px inset #2b4a51;

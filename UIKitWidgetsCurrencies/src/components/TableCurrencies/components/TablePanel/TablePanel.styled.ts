@@ -6,7 +6,7 @@ export const TablePanel = styled.div`
   display: flex;
   align-items: end;
   gap: .8rem;
-  padding: .4rem;
+  padding: .2rem;
   color: white;
   background: ${colors.blue["20"]};
 `

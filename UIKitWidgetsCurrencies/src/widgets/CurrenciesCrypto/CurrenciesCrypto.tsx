@@ -3,7 +3,7 @@ import React, {FC, useEffect, useState} from 'react'
 import { TableCurrencies, TableCurrenciesParts, WidgetTitle, StatisticCharts, Input } from '../../components'
 import { IconDoubleArrows, IconSearch } from '../../icons'
 import { AnimationSlideTo } from '../../animations'
-import { useCryptocurrenciesData } from '../../hooks/commons'
+import { useCryptoAssets } from '../../hooks/commons'
 
 import * as Styled from './CurrenciesCrypto.styled'
 
@@ -24,7 +24,6 @@ type TCurrenciesCrypto = {
 }
 
 const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
-  dataCurrenciesCrypto,
   dataCurrenciesStable,
   widgetTitle,
   isWidgetTitle = true,
@@ -35,7 +34,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   hasStatisticBlock,
   size
 }) => {
-  const currencies = useCryptocurrenciesData()
+  const currencies = useCryptoAssets()
   const [ dataTables, setDataTables ] = useState([])
   const [ dataStatistic, setDataStatistic ] = useState({
     title: 'Changes "BTC/EUR',

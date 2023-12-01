@@ -55,19 +55,18 @@ const TableBody: FC<any> = ({
 
   return (
     <Styled.TableBody>
-      {dataItems
-        .map(({baseAsset, name, abbreviation, value, isSelected}, id) => {
+      {dataItems.map(({baseAsset, name, abbreviation, value, isSelected}, id) => {
           if (isSelectedItem(id)) {
             return (
               <Styled.ItemSelected onClick={() => onClickItem(id)} key={id}>
                 <Styled.WrapName>
-                  <Styled.CurrencyName>{name || abbreviation}</Styled.CurrencyName>
-                  <Styled.CurrencyAbbreviation>{abbreviation || baseAsset}</Styled.CurrencyAbbreviation>
+                  {(name || baseAsset) && <Styled.CurrencyName>{ name || baseAsset }</Styled.CurrencyName>}
+                  {baseAsset && <Styled.CurrencyAbbreviation>{ baseAsset }</Styled.CurrencyAbbreviation>}
                 </Styled.WrapName>
 
                 {hideInput ?
                   <Styled.CurrencyValue>
-                    { (Math.random() * 10).toFixed(6) }
+                    {(Math.random() * 10).toFixed(6)}
                   </Styled.CurrencyValue>:
                   <Input
                     isAutoFocus
@@ -84,8 +83,8 @@ const TableBody: FC<any> = ({
           return (
             <Styled.Item onClick={() => onClickItem(id)} key={id}>
               <Styled.WrapName>
-                {(name || abbreviation) && <Styled.CurrencyName>{name || abbreviation}</Styled.CurrencyName>}
-                {(baseAsset || abbreviation) && <Styled.CurrencyAbbreviation>{abbreviation || baseAsset}</Styled.CurrencyAbbreviation>}
+                {(name || baseAsset) && <Styled.CurrencyName>{ name || baseAsset }</Styled.CurrencyName>}
+                {baseAsset && <Styled.CurrencyAbbreviation>{ baseAsset }</Styled.CurrencyAbbreviation>}
               </Styled.WrapName>
             </Styled.Item>
           )

@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react'
 
-export const useCryptocurrenciesData = () => {
-  const [currencies, setCurrencies] = useState([])
+export const useCryptoAssets = () => {
+  const [cryptoAssets, setCryptoAssets] = useState([])
 
   useEffect(() => {
-    fetch('https://api.binance.com/api/v3/exchangeInfo')
-      .then((data) => data.json())
-      .then((data) => {setCurrencies(data.symbols)})
+    const fetchData = async () => {
+      const data = await fetch('https://api.binance.com/api/v3/exchangeInfo')
+      const json = await data.json()
+      setCryptoAssets(json?.symbols)
+    }
+
+    fetchData()
+      .catch(console.error)
   }, [])
 
-  return currencies
+  return cryptoAssets
 }
 
 // @TODO It is necessary to remove pagination from the frontend

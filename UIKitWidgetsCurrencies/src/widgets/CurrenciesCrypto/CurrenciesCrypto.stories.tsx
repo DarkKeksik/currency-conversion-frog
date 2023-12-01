@@ -15,61 +15,49 @@ export const DefaultProps = {
     dataCurrenciesCrypto: [
       {
         name: 'Bitcoin',
-        abbreviation: 'BTC/EUR',
-        price: 33.839,
-        change: '+3%'
+        baseAsset: 'BTC/EUR',
       },
       {
         name: 'Ethereum',
-        abbreviation: 'ETH/EUR',
-        price: 1781.15,
-        change: '+1%'
+        baseAsset: 'ETH/EUR',
       },
       {
         name: 'Tether USDt',
-        abbreviation: 'TRX/EUR',
-        price: 0.09351,
-        change: '+6%'
+        baseAsset: 'TRX/EUR',
       },
       {
         name: 'Bitcoin',
-        abbreviation: 'BTC/EUR',
-        price: 33.839,
-        change: '+3%'
+        baseAsset: 'BTC/EUR',
       },
       {
         name: 'Ethereum',
-        abbreviation: 'ETH/EUR',
-        price: 1781.15,
-        change: '+1%'
+        baseAsset: 'ETH/EUR',
       },
       {
         name: 'Tether USDt',
-        abbreviation: 'TRX/EUR',
-        price: 0.09351,
-        change: '+6%'
+        baseAsset: 'TRX/EUR',
       },
     ],
     dataCurrenciesStable: [
       {
         name: 'Russian ruble',
-        abbreviation: 'RUB'
+        baseAsset: 'RUB'
       },
       {
         name: 'United States dollar',
-        abbreviation: 'USD'
+        baseAsset: 'USD'
       },
       {
         name: 'Euro',
-        abbreviation: 'EUR'
+        baseAsset: 'EUR'
       },
       {
         name: 'Pound sterling',
-        abbreviation: 'GBP'
+        baseAsset: 'GBP'
       },
       {
         name: 'Turkish lira',
-        abbreviation: 'TRY'
+        baseAsset: 'TRY'
       },
     ],
     rowsMax: 5,

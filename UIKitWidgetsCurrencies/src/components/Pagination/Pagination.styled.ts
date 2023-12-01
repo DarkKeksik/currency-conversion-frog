@@ -25,8 +25,10 @@ export const Item = styled.p<{isActive?: boolean}>`
   justify-content: center;
   min-width: 1.4rem;
   height: 1.4rem;
+  padding: 2px;
   border-radius: 3px;
   font-size: 12px;
+  box-sizing: border-box;
   transition-duration: .3s;
   
   ${({ isActive }) => isActive ?
