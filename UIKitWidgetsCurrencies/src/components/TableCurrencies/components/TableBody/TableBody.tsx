@@ -4,7 +4,7 @@ import { Input } from '../../../'
 import * as Styled from './TableBody.styled'
 
 const TableBody: FC<any> = ({
-  callback,
+  handler,
   dataItems = [],
   rowsMax,
   multiSelect,
@@ -13,6 +13,7 @@ const TableBody: FC<any> = ({
 }) => {
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const [selectedIds, setSelectedIds] = useState<Array<number>>([])
+  const [isClicked, setIsClicked] = useState(false)
 
   const isSelectedItem = (id): boolean => {
     if(multiSelect) {
@@ -36,18 +37,19 @@ const TableBody: FC<any> = ({
         const clearedArr = selectedIds.filter((itemId) => !(itemId === id))
         return setSelectedIds(clearedArr)
       }
-
+      setIsClicked(true)
       return setSelectedIds([...selectedIds, id])
     }
 
+    setIsClicked(true)
     setSelectedId(id)
   }
 
   useEffect(() => {
-    if (callback) {
-      callback(Boolean(selectedId || selectedIds.length))
+    if (handler && isClicked) {
+      handler(Boolean(selectedId || selectedIds.length))
     }
-  }, [callback, selectedId, selectedIds])
+  }, [selectedId, selectedIds])
 
   if(!dataItems.length) {
     return <div>Loading...</div>

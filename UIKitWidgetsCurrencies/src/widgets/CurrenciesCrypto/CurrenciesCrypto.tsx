@@ -6,6 +6,7 @@ import { AnimationSlideTo } from '../../animations'
 import { useCryptoAssets } from '../../hooks/commons'
 
 import * as Styled from './CurrenciesCrypto.styled'
+import { endpoints } from '../../api'
 
 // @TODO Needs to be moved to a reusable type file
 type TSizes = 's' | 'm' | 'l'
@@ -47,6 +48,8 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
 
   const getStatistic = (isVisible) => {
     setIsVisibleStatistic(isVisible)
+    fetch(`${endpoints.binanceLatestPriceSymbols}?symbols=["BTCRUB"]`)
+      .then((data) => data.json())
   }
 
   const onClickChangeTables = () => {
@@ -104,9 +107,9 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         <TableCurrencies
           dataItems={dataTables[1]?.dataCurrencies}
           rowsMax={dataTables[1]?.rowsMax}
+          handlerItem={getStatistic}
           multiSelect
           hideInput
-          callbackItem={getStatistic}
         >
           <TableCurrenciesParts.TableHead>
             <b>{dataTables[1]?.title}</b>

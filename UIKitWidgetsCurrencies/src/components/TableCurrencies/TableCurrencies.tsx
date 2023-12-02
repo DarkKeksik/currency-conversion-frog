@@ -14,7 +14,7 @@ type TypeTableCurrencies = PropsWithChildren & {
   multiSelect?: boolean
   hideInput?: boolean
   isSelectedDefault?: boolean
-  callbackItem?: () => void
+  handlerItem?: () => void
   callbackPagination?: () => void
 }
 
@@ -26,7 +26,7 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
   multiSelect = false,
   hideInput,
   isSelectedDefault,
-  callbackItem,
+  handlerItem,
   callbackPagination
 }) => {
   const [pageCurrent, setPageCurrent] = useState(1)
@@ -44,7 +44,7 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
         rowsMax={rowsMax}
         hideInput={hideInput}
         isSelectedDefault={isSelectedDefault}
-        callback={callbackItem}
+        handler={handlerItem}
       />
       {dataItems.length > rowsMax && (
         <TablePanel

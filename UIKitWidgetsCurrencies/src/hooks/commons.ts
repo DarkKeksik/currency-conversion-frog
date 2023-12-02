@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+
+import { endpoints } from '../api'
 
 export const useCryptoAssets = () => {
   const [cryptoAssets, setCryptoAssets] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('https://api.binance.com/api/v3/exchangeInfo')
-      const json = await data.json()
-      setCryptoAssets(json?.symbols)
+      const { data } = await axios.get(endpoints.binanceExchangeInfo)
+      setCryptoAssets(data?.symbols)
     }
 
     fetchData()
