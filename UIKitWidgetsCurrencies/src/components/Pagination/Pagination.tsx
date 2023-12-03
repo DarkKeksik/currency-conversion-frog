@@ -53,9 +53,12 @@ const Pagination: FC<TTablePanel> = ({
 
   return (
     <Styled.Pagination>
-      {isButtonStart &&
-        <Styled.Item onClick={() => onPagination(1)}>1</Styled.Item>
-      }
+      {isButtonStart && (
+        <>
+          <Styled.Item onClick={() => onPagination(1)}>1</Styled.Item>
+          <p>...</p>
+        </>
+      )}
 
       <Styled.Items>
         {pagesListArr.map((item) => (
@@ -68,11 +71,14 @@ const Pagination: FC<TTablePanel> = ({
         ))}
       </Styled.Items>
 
-      {isButtonLast &&
-        <Styled.Item onClick={() => onPagination(totalPages)}>
-          {totalPages}
-        </Styled.Item>
-      }
+      {isButtonLast && (
+        <>
+          <p>...</p>
+          <Styled.Item onClick={() => onPagination(totalPages)}>
+            {totalPages}
+          </Styled.Item>
+        </>
+      )}
     </Styled.Pagination>
   )
 }

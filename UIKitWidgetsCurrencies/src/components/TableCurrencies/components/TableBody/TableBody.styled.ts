@@ -1,10 +1,12 @@
-import styled from "styled-components"
-import { colors } from "../../../../styles";
+import styled from 'styled-components'
+import { colors } from '../../../../styles'
 
 export const TableBody = styled.div`
-  flex: 1 0 0;
-  letter-spacing: 1px;
+  min-height: 100px;
+  height: 100%;
+  flex: 1 0;
   border: 2px solid ${ colors.blue["20"] };
+  letter-spacing: 1px;
   border-radius: 5px;
 `
 

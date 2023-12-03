@@ -1,4 +1,5 @@
 export { default as Input } from './Input/Input'
+export { default as Preloader } from './Preloader/Preloader'
 
 export { default as WidgetTitle } from './WidgetTitle/WidgetTitle'
 export { default as InfoBlock } from './InfoBlock/InfoBlock'

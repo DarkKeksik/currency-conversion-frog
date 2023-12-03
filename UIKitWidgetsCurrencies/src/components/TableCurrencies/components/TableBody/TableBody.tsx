@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { Input } from '../../../'
+import { Input, Preloader } from '../../../'
 import * as Styled from './TableBody.styled'
 
 const TableBody: FC<any> = ({
@@ -49,10 +49,14 @@ const TableBody: FC<any> = ({
     if (handler && isClicked) {
       handler(Boolean(selectedId || selectedIds.length))
     }
-  }, [selectedId, selectedIds])
+  }, [selectedId, selectedIds, isClicked])
 
   if(!dataItems.length) {
-    return <div>Loading...</div>
+    return (
+      <Styled.TableBody>
+        <Preloader />
+      </Styled.TableBody>
+    )
   }
 
   return (
