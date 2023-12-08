@@ -1,8 +1,8 @@
 {
-  "name": "ui-kit-widgets-currencies",
-  "version": "1.0.0",
+  "name": "currency-conversion-frog",
+  "version": "0.0.1",
   "description": "This repository can help you show currencies widgets in your application.",
-  "main": "build/ui-kit-widgets-currencies.js",
+  "main": "build/currency-conversion-frog.js",
   "author": "Sychevskiy Ilya <1fogfrog1@gmail.com>",
   "license": "MIT",
   "private": true,
@@ -35,7 +35,7 @@
     "webpack-cli": "5.1.4"
   },
   "dependencies": {
-    "react-redux": "^8.1.3",
-    "recharts": "^2.9.3"
+    "recharts": "^2.9.3",
+    "zustand": "^4.4.7"
   }
 }

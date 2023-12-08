@@ -1,6 +1,17 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "./App",
+    "paths": {
+      "@Animations": ["./src/Animations"],
+      "@Components":["./src/Components"],
+      "@Icons": ["./src/Icons"],
+      "@api": ["./src/api"],
+      "@data": ["./src/data"],
+      "@hooks": ["./src/hooks"],
+      "@styles": ["./src/styles"],
+      "@helpers": ["./src/helpers"]
+    }
   }
 }

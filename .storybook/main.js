@@ -1,7 +1,8 @@
-/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const webpackConfigFront = require('../webpackConfigs/webpack.config')
+
 const config = {
   stories: [
-    "../UIKitWidgetsCurrencies/**/*.stories.@(js|jsx|ts|tsx)"
+    "../App/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   staticDirs: ['../assets'],
   addons: [
@@ -14,7 +15,15 @@ const config = {
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
+  },
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      ...webpackConfigFront.resolve.alias
+    }
+
+    return config
   }
 }
 
-export default config;
+export default config
