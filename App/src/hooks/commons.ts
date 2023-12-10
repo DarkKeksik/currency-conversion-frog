@@ -11,7 +11,8 @@ export const useCryptoAssets = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(endpoints.binanceExchangeInfo)
-      // @TODO need move to in TableCurrencies
+
+      // @TODO Need to move it to the Table Currency
       const assetsWithName = getAssetsWithName(data?.symbols, currenciesCryptoDataFront)
 
       setCryptoAssets(assetsWithName)
@@ -27,17 +28,10 @@ export const useCryptoAssets = () => {
 export const useStableCurrencies = () => {
   const [currencies, setCurrencies] = useState([])
 
-  // useEffect(() => {
-  //   setCurrencies(Object.values(currenciesStableDataFront))
-  // }, [])
-
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(endpoints.binanceCurrenciesStable)
 
-      console.log('#####')
-      console.log('Test: ', data)
-      console.log('#####')
       setCurrencies(data?.symbols)
     }
 
