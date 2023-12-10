@@ -1,7 +1,5 @@
-import React, { FC, PropsWithChildren, useMemo, useState } from 'react'
+import React, { FC, PropsWithChildren, useState } from 'react'
 
-import { getAssetsWithName } from '@helpers'
-import { cryptoDataFront } from '@data'
 import { hooksCommon } from '@hooks'
 
 import { TableHead, TableBody, TablePanel } from './components'
@@ -31,16 +29,13 @@ const TableCurrencies: FC<TypeTableCurrencies> = ({
 }) => {
   const [pageCurrent, setPageCurrent] = useState(1)
   const [data, totalPages] = hooksCommon.usePaginationData(dataItems, pageCurrent, rowsMax)
-  const assetsWithName = useMemo(() => (
-    getAssetsWithName(data, cryptoDataFront)
-  ), [data])
 
   return (
     <Styled.TableCurrencies>
       {children ?? <TableHead title={title} />}
       <TableBody
         multiSelect={multiSelect}
-        dataItems={assetsWithName}
+        dataItems={data}
         rowsMax={rowsMax}
         hideInput={hideInput}
         isSelectedDefault={isSelectedDefault}

@@ -1,1 +1,4 @@
-export { cryptoDataFront } from './dictionaries'
+export {
+  currenciesCryptoDataFront,
+  currenciesStableDataFront
+} from './dictionaries'

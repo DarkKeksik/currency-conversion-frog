@@ -33,7 +33,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(jsx?|tsx?)$/,
         use: 'swc-loader',
         exclude: /node_modules/
       },

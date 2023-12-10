@@ -1,4 +1,4 @@
-export const cryptoDataFront = {
+export const currenciesCryptoDataFront = {
   "btc": {
     "name": "Bitcoin"
   },
@@ -895,5 +895,24 @@ export const cryptoDataFront = {
   },
   "cyber": {
     "name": "CyberConnect"
+  }
+} as const
+
+export const currenciesStableDataFront = {
+  "rub": {
+    name: 'Russian ruble',
+  },
+  "usd": {
+    name: 'United States dollar',
+  },
+  "eur": {
+    name: 'Euro',
+    baseAsset: 'EUR'
+  },
+  'gbp': {
+    name: 'Pound sterling',
+  },
+  "try": {
+    name: 'Turkish lira',
   }
 } as const

@@ -12,28 +12,6 @@ export const DefaultProps = {
   args: {
     isWidgetTitle: true,
     hasStatisticBlock: true,
-    dataCurrenciesStable: [
-      {
-        name: 'Russian ruble',
-        baseAsset: 'RUB'
-      },
-      {
-        name: 'United States dollar',
-        baseAsset: 'USD'
-      },
-      {
-        name: 'Euro',
-        baseAsset: 'EUR'
-      },
-      {
-        name: 'Pound sterling',
-        baseAsset: 'GBP'
-      },
-      {
-        name: 'Turkish lira',
-        baseAsset: 'TRY'
-      },
-    ],
     rowsMax: 5,
     rowsMaxStable: 3,
     rowsMaxCrypto: 3

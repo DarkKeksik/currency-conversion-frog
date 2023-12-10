@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import { endpoints } from '@api'
+import { getAssetsWithName } from '@helpers'
+import { currenciesCryptoDataFront } from '@data'
 
 export const useCryptoAssets = () => {
   const [cryptoAssets, setCryptoAssets] = useState([])
@@ -9,7 +11,10 @@ export const useCryptoAssets = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(endpoints.binanceExchangeInfo)
-      setCryptoAssets(data?.symbols)
+      // @TODO need move to in TableCurrencies
+      const assetsWithName = getAssetsWithName(data?.symbols, currenciesCryptoDataFront)
+
+      setCryptoAssets(assetsWithName)
     }
 
     fetchData()
@@ -17,6 +22,30 @@ export const useCryptoAssets = () => {
   }, [])
 
   return cryptoAssets
+}
+
+export const useStableCurrencies = () => {
+  const [currencies, setCurrencies] = useState([])
+
+  // useEffect(() => {
+  //   setCurrencies(Object.values(currenciesStableDataFront))
+  // }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get(endpoints.binanceCurrenciesStable)
+
+      console.log('#####')
+      console.log('Test: ', data)
+      console.log('#####')
+      setCurrencies(data?.symbols)
+    }
+
+    fetchData()
+      .catch(console.error)
+  }, [])
+
+  return currencies
 }
 
 // @TODO It is necessary to remove pagination from the frontend

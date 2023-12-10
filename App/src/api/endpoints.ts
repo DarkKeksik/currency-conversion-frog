@@ -15,3 +15,4 @@ export const rootCoinbase = 'https://api.coinbase.com/v2'
 // Binance endpoints
 export const binanceExchangeInfo = `${rootBinance}/exchangeInfo`
 export const binanceLatestPriceSymbols = `${rootBinance}/ticker/price`
+export const binanceCurrenciesStable = `${rootBinance}/binanceCurrenciesStable`

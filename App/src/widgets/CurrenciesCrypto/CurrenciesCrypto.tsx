@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react'
 
 import { IconDoubleArrows, IconSearch } from '@Icons'
+import { axiosMockAdapter, endpoints } from '@api'
 import { AnimationSlideTo } from '@Animations'
 import { hooksCommon } from '@hooks'
-import { endpoints } from '@api'
 import {
   TableCurrencies,
   TableCurrenciesParts,
@@ -30,6 +30,9 @@ type TCurrenciesCrypto = {
   size?: TSizes
 }
 
+// Mocks for temporarily non-existent api methods
+axiosMockAdapter()
+
 const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   dataCurrenciesStable,
   widgetTitle,
@@ -41,7 +44,9 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   hasStatisticBlock,
   size
 }) => {
-  const currencies = hooksCommon.useCryptoAssets()
+  const currenciesCrypto = hooksCommon.useCryptoAssets()
+  const currenciesStable = hooksCommon.useStableCurrencies()
+
   const [ dataTables, setDataTables ] = useState([])
   const [ dataStatistic, setDataStatistic ] = useState({
     title: 'Changes "BTC/EUR',
@@ -71,7 +76,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchIcon: <IconSearch fill='#fff' size={14} />,
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
-        dataCurrencies: dataCurrenciesStable,
+        dataCurrencies: currenciesStable,
         rowsMax: rowsMaxStable || rowsMax
       },
       {
@@ -79,12 +84,12 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchIcon: <IconSearch fill='#fff' size={14} />,
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
-        dataCurrencies: currencies,
+        dataCurrencies: currenciesCrypto,
         onPagination: () => {},
         rowsMax: rowsMaxCrypto || rowsMax
       }
     ])
-  }, [rowsMaxCrypto, rowsMaxStable, rowsMax, currencies])
+  }, [rowsMaxCrypto, rowsMaxStable, rowsMax, currenciesCrypto])
 
   return (
     <Styled.Wrap size={size}>

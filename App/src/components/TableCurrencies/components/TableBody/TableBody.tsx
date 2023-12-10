@@ -61,7 +61,7 @@ const TableBody: FC<any> = ({
 
   return (
     <Styled.TableBody>
-      {dataItems.map(({baseAsset, name, abbreviation, value, isSelected}, id) => {
+      {dataItems.map(({baseAsset, name, value, isSelected}, id) => {
           if (isSelectedItem(id)) {
             return (
               <Styled.ItemSelected onClick={() => onClickItem(id)} key={id}>
@@ -79,7 +79,7 @@ const TableBody: FC<any> = ({
                     defaultValue={1}
                     placeholder='Enter a value'
                     type='number'
-                    afterContent={abbreviation || baseAsset}
+                    afterContent={baseAsset}
                   />
                 }
               </Styled.ItemSelected>

@@ -16,8 +16,7 @@
       "parser": {
         "syntax": "ecmascript",
         "jsx": true,
-        "dynamicImport": true,
-        "loose": true
+        "dynamicImport": true
       }
     }
   },
