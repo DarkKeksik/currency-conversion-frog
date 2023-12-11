@@ -12,6 +12,11 @@ export const Wrap = styled.div`
 `
 
 export const Preloader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
   height: 100%;
   width: 100%;
   z-index: 1;
@@ -20,11 +25,8 @@ export const Preloader = styled.div`
 export const Loader = styled.div`
   display: block;
   position: relative;
-  left: 50%;
-  top: 50%;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 3px solid transparent;
   border-top-color: ${colors.green[25]};
