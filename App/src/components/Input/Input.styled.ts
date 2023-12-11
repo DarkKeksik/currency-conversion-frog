@@ -16,13 +16,14 @@ export const InputVisible = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 0.5rem;
   width: 100%;
   height: 100%;
-  padding: 0 .5rem;
   color: ${ colors.white["5"] };
   font-size: 13px;
-  transition-duration: .3s;
   cursor: pointer;
+  box-sizing: border-box;
+  transition-duration: .3s;
   
   &:hover {
     background: ${ colors.blue["15"] };

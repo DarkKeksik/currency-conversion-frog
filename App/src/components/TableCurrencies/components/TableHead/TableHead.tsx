@@ -8,11 +8,7 @@ type TypeTableHead = PropsWithChildren & {
 const TableHead: FC<TypeTableHead> = ({ children, title }) => {
   return (
     <Styled.Head>
-      {children ?? (
-        <>
-          <Styled.Title>{ title }</Styled.Title>
-        </>
-      )}
+      {children ?? <Styled.Title>{ title }</Styled.Title>}
     </Styled.Head>
   )
 }

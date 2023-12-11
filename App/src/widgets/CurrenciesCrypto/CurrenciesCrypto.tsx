@@ -76,6 +76,9 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchIcon: <IconSearch fill='#fff' size={14} />,
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
+        inputSearchCallback: (value) => {
+          console.log(`World currencies value after debounce: ${ value }`)
+        },
         dataCurrencies: currenciesStable,
         rowsMax: rowsMaxStable || rowsMax
       },
@@ -84,6 +87,9 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchIcon: <IconSearch fill='#fff' size={14} />,
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
+        inputSearchCallback: (value) => {
+          console.log(`Cryptocurrencies value after debounce: ${ value }`)
+        },
         dataCurrencies: currenciesCrypto,
         onPagination: () => {},
         rowsMax: rowsMaxCrypto || rowsMax
@@ -107,6 +113,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
               Icon={dataTables[0]?.inputSearchIcon}
               type={dataTables[0]?.inputSearchType}
               placeholder={dataTables[0]?.inputSearchPlaceholder}
+              sideEffects={dataTables[0]?.inputSearchCallback}
             />
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>
@@ -128,6 +135,7 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
               Icon={dataTables[1]?.inputSearchIcon}
               type={dataTables[1]?.inputSearchType}
               placeholder={dataTables[1]?.inputSearchPlaceholder}
+              sideEffects={dataTables[1]?.inputSearchCallback}
             />
           </TableCurrenciesParts.TableHead>
         </TableCurrencies>

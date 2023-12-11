@@ -5,6 +5,7 @@ import { colors } from '@styles'
 export const Head = styled.div`
   display: flex;
   gap: 5px;
+  align-items: center;
   justify-content: space-between;
   padding: 1em;
   font-size: 18px;

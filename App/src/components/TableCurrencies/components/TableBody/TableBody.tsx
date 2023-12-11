@@ -61,7 +61,7 @@ const TableBody: FC<any> = ({
 
   return (
     <Styled.TableBody>
-      {dataItems.map(({baseAsset, name, value, isSelected}, id) => {
+      {dataItems.map(({baseAsset, name}, id) => {
           if (isSelectedItem(id)) {
             return (
               <Styled.ItemSelected onClick={() => onClickItem(id)} key={id}>
