@@ -73,7 +73,7 @@ const TableBody: FC<any> = ({
                 {hideInput ?
                   <Styled.CurrencyValue>
                     {(Math.random() * 10).toFixed(6)}
-                  </Styled.CurrencyValue>:
+                  </Styled.CurrencyValue> :
                   <Input
                     isAutoFocus
                     defaultValue={1}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
 import { endpoints } from '@api'
@@ -72,4 +72,16 @@ export const useDebounce = (value: string | number, delay = 500) => {
   }, [value, delay])
 
   return debouncedValue
+}
+
+export const useEffectSkipFirstRender = (func, deps) => {
+  const mounted = useRef(false)
+
+  useEffect(() => {
+    if (mounted.current) {
+      func()
+    } else {
+      mounted.current = true;
+    }
+  }, deps);
 }

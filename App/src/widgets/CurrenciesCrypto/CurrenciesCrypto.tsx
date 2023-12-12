@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 
 import { IconDoubleArrows, IconSearch } from '@Icons'
 import { axiosMockAdapter, endpoints } from '@api'
+import { filterArrByValueKey } from '@helpers'
 import { AnimationSlideTo } from '@Animations'
 import { hooksCommon } from '@hooks'
 import {
@@ -47,6 +48,17 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   const currenciesCrypto = hooksCommon.useCryptoAssets()
   const currenciesStable = hooksCommon.useStableCurrencies()
 
+  const [currenciesCryptoResult, setCurrenciesCryptoResult] = useState(currenciesCrypto)
+  const [currenciesStableResult, setCurrenciesStableResult] = useState(currenciesCrypto)
+
+  useEffect(() => {
+    setCurrenciesCryptoResult(currenciesCrypto)
+  }, [currenciesCrypto])
+
+  useEffect(() => {
+    setCurrenciesStableResult(currenciesStable)
+  }, [currenciesStable])
+
   const [ dataTables, setDataTables ] = useState([])
   const [ dataStatistic, setDataStatistic ] = useState({
     title: 'Changes "BTC/EUR',
@@ -59,6 +71,8 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
 
   const getStatistic = (isVisible) => {
     setIsVisibleStatistic(isVisible)
+
+    // @TODO axios
     fetch(`${endpoints.binanceLatestPriceSymbols}?symbols=["BTCRUB"]`)
       .then((data) => data.json())
   }
@@ -68,7 +82,6 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     setIsVisibleStatistic(false)
   }
 
-  // @TODO
   useEffect(() => {
     setDataTables([
       {
@@ -77,9 +90,11 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
         inputSearchCallback: (value) => {
-          console.log(`World currencies value after debounce: ${ value }`)
+          const currenciesStableFiltered =
+            filterArrByValueKey(currenciesStable, value, ['baseAsset', 'name'])
+          setCurrenciesStableResult(currenciesStableFiltered)
         },
-        dataCurrencies: currenciesStable,
+        dataCurrencies: currenciesStableResult,
         rowsMax: rowsMaxStable || rowsMax
       },
       {
@@ -88,14 +103,23 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
         inputSearchPlaceholder: 'Search',
         inputSearchType: 'string',
         inputSearchCallback: (value) => {
-          console.log(`Cryptocurrencies value after debounce: ${ value }`)
+          const currenciesCryptoFiltered =
+            filterArrByValueKey(currenciesCrypto, value, ['baseAsset', 'name'])
+          setCurrenciesCryptoResult(currenciesCryptoFiltered)
         },
-        dataCurrencies: currenciesCrypto,
+        dataCurrencies: currenciesCryptoResult,
         onPagination: () => {},
         rowsMax: rowsMaxCrypto || rowsMax
       }
     ])
-  }, [rowsMaxCrypto, rowsMaxStable, rowsMax, currenciesCrypto])
+  }, [
+    rowsMaxCrypto,
+    rowsMaxStable,
+    rowsMax,
+    currenciesCrypto,
+    currenciesCryptoResult,
+    currenciesStableResult
+  ])
 
   return (
     <Styled.Wrap size={size}>

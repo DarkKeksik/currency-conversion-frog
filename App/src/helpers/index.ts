@@ -1,1 +1,1 @@
-export { getAssetsWithName } from './data'
+export { getAssetsWithName, filterArrByValueKey } from './utils'

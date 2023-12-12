@@ -26,13 +26,21 @@ const Input: FC<TInput> = ({
   isAutoFocus,
   placeholder = '',
   type = 'string',
-  defaultValue,
+  defaultValue = "",
   sideEffects,
   min = 1,
   Icon
 }) => {
   const [value, setValue] = useState(type === 'number' ? min : '')
   const valueDebounce = hooksCommon.useDebounce(value)
+
+  useEffect(() => {
+    setValue(defaultValue)
+  }, [defaultValue, placeholder])
+
+  hooksCommon.useEffectSkipFirstRender(() => {
+    sideEffects && sideEffects(valueDebounce)
+  }, [valueDebounce])
 
   const getDisplayValue = useCallback(() => {
     if(type === 'string' && String(value).length === 0) {
@@ -42,22 +50,12 @@ const Input: FC<TInput> = ({
     } else {
       return value
     }
-  }, [value])
+  }, [value, placeholder])
 
   const onChange = (e): void => {
     const { target: { value: inputVal}} = e
     setValue(inputVal)
   }
-
-  useEffect(() => {
-    setValue(defaultValue || placeholder)
-  }, [defaultValue, placeholder])
-
-  useEffect(() => {
-    if(sideEffects) {
-      sideEffects(valueDebounce)
-    }
-  }, [valueDebounce])
 
   return (
     <Styled.Wrap>

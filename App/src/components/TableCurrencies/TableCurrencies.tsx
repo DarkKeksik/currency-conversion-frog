@@ -12,7 +12,7 @@ type TypeTableCurrencies = PropsWithChildren & {
   multiSelect?: boolean
   hideInput?: boolean
   isSelectedDefault?: boolean
-  handlerItem?: () => void
+  handlerItem?: (data) => void
   callbackPagination?: () => void
 }
 
