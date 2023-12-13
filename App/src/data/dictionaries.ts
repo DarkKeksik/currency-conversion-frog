@@ -899,20 +899,19 @@ export const currenciesCryptoDataFront = {
 } as const
 
 export const currenciesStableDataFront = {
-  "rub": {
-    name: 'Russian ruble',
+  "try": {
+    name: 'Turkish lira',
+  },
+  "eur": {
+    name: 'Euro',
   },
   "usd": {
     name: 'United States dollar',
   },
-  "eur": {
-    name: 'Euro',
-    baseAsset: 'EUR'
+  "rub": {
+    name: 'Russian ruble',
   },
   'gbp': {
     name: 'Pound sterling',
-  },
-  "try": {
-    name: 'Turkish lira',
   }
 } as const

@@ -5,15 +5,16 @@ import { endpoints } from '@api'
 import { getAssetsWithName } from '@helpers'
 import { currenciesCryptoDataFront } from '@data'
 
-export const useCryptoAssets = () => {
+export const useCryptoAssets = (currencyFilter = 'TRY') => {
   const [cryptoAssets, setCryptoAssets] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(endpoints.binanceExchangeInfo)
 
+      const dataParsedByTRY = data?.symbols.filter(({ quoteAsset }) => quoteAsset === currencyFilter)
       // @TODO Need to move it to the Table Currency
-      const assetsWithName = getAssetsWithName(data?.symbols, currenciesCryptoDataFront)
+      const assetsWithName = getAssetsWithName(dataParsedByTRY, currenciesCryptoDataFront)
 
       setCryptoAssets(assetsWithName)
     }
