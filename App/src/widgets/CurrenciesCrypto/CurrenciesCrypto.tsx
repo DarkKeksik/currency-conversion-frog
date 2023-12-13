@@ -21,8 +21,6 @@ type TSizes = 's' | 'm' | 'l'
 type TCurrenciesCrypto = {
   widgetTitle: string,
   isWidgetTitle?: boolean,
-  dataCurrenciesCrypto: any,
-  dataCurrenciesStable: any,
   rowsMax?: number,
   rowsMaxStable?: number,
   rowsMaxCrypto?: number
@@ -35,7 +33,6 @@ type TCurrenciesCrypto = {
 axiosMockAdapter()
 
 const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
-  dataCurrenciesStable,
   widgetTitle,
   isWidgetTitle = true,
   rowsMax = 5,
@@ -48,17 +45,16 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   const currenciesCrypto = hooksCommon.useCryptoAssets()
   const currenciesStable = hooksCommon.useStableCurrencies()
 
-  const [currenciesCryptoResult, setCurrenciesCryptoResult] = useState(currenciesCrypto)
-  const [currenciesStableResult, setCurrenciesStableResult] = useState(currenciesCrypto)
+  const [currenciesCryptoFiltered, setCurrenciesCryptoFiltered] = useState(currenciesCrypto)
+  const [currenciesStableFiltered, setCurrenciesStableFiltered] = useState(currenciesCrypto)
 
   useEffect(() => {
-    setCurrenciesStableResult(currenciesStable)
+    setCurrenciesStableFiltered(currenciesStable)
   }, [currenciesStable])
 
   useEffect(() => {
-    setCurrenciesCryptoResult(currenciesCrypto)
+    setCurrenciesCryptoFiltered(currenciesCrypto)
   }, [currenciesCrypto])
-
 
   // @TODO need useReducer or something else for this state
   const [ dataTables, setDataTables ] = useState([])
@@ -70,6 +66,46 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   })
 
   const [isVisibleStatistic, setIsVisibleStatistic] = useState(isVisibleStatisticCharts)
+
+  useEffect(() => {
+    setDataTables([
+      {
+        title: 'World currencies',
+        inputSearchIcon: <IconSearch fill='#fff' size={14} />,
+        inputSearchPlaceholder: 'Search',
+        inputSearchType: 'string',
+        inputSearchCallback: (value) => {
+          const currenciesStableFiltered =
+            filterArrByValueKey(currenciesStable, value, ['baseAsset', 'name'])
+          setCurrenciesStableFiltered(currenciesStableFiltered)
+        },
+        dataCurrencies: currenciesStableFiltered,
+        rowsMax: rowsMaxStable || rowsMax
+      },
+      {
+        title: 'Cryptocurrencies',
+        inputSearchIcon: <IconSearch fill='#fff' size={14} />,
+        inputSearchPlaceholder: 'Search',
+        inputSearchType: 'string',
+        inputSearchCallback: (value) => {
+          const currenciesCryptoFiltered =
+            filterArrByValueKey(currenciesCrypto, value, ['baseAsset', 'name'])
+          setCurrenciesCryptoFiltered(currenciesCryptoFiltered)
+        },
+        dataCurrencies: currenciesCryptoFiltered,
+        onPagination: () => {},
+        rowsMax: rowsMaxCrypto || rowsMax
+      }
+    ])
+  }, [
+    rowsMaxCrypto,
+    rowsMaxStable,
+    rowsMax,
+    currenciesCrypto,
+    currenciesStable,
+    currenciesCryptoFiltered,
+    currenciesStableFiltered
+  ])
 
   const getStatistic = (isVisible) => {
     setIsVisibleStatistic(isVisible)
@@ -83,45 +119,6 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
     setDataTables([dataTables[1], dataTables[0]])
     setIsVisibleStatistic(false)
   }
-
-  useEffect(() => {
-    setDataTables([
-      {
-        title: 'World currencies',
-        inputSearchIcon: <IconSearch fill='#fff' size={14} />,
-        inputSearchPlaceholder: 'Search',
-        inputSearchType: 'string',
-        inputSearchCallback: (value) => {
-          const currenciesStableFiltered =
-            filterArrByValueKey(currenciesStable, value, ['baseAsset', 'name'])
-          setCurrenciesStableResult(currenciesStableFiltered)
-        },
-        dataCurrencies: currenciesStableResult,
-        rowsMax: rowsMaxStable || rowsMax
-      },
-      {
-        title: 'Cryptocurrencies',
-        inputSearchIcon: <IconSearch fill='#fff' size={14} />,
-        inputSearchPlaceholder: 'Search',
-        inputSearchType: 'string',
-        inputSearchCallback: (value) => {
-          const currenciesCryptoFiltered =
-            filterArrByValueKey(currenciesCrypto, value, ['baseAsset', 'name'])
-          setCurrenciesCryptoResult(currenciesCryptoFiltered)
-        },
-        dataCurrencies: currenciesCryptoResult,
-        onPagination: () => {},
-        rowsMax: rowsMaxCrypto || rowsMax
-      }
-    ])
-  }, [
-    rowsMaxCrypto,
-    rowsMaxStable,
-    rowsMax,
-    currenciesCrypto,
-    currenciesCryptoResult,
-    currenciesStableResult
-  ])
 
   return (
     <Styled.Wrap size={size}>
