@@ -52,13 +52,15 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
   const [currenciesStableResult, setCurrenciesStableResult] = useState(currenciesCrypto)
 
   useEffect(() => {
-    setCurrenciesCryptoResult(currenciesCrypto)
-  }, [currenciesCrypto])
-
-  useEffect(() => {
     setCurrenciesStableResult(currenciesStable)
   }, [currenciesStable])
 
+  useEffect(() => {
+    setCurrenciesCryptoResult(currenciesCrypto)
+  }, [currenciesCrypto])
+
+
+  // @TODO need useReducer or something else for this state
   const [ dataTables, setDataTables ] = useState([])
   const [ dataStatistic, setDataStatistic ] = useState({
     title: 'Changes "BTC/EUR',
@@ -127,9 +129,9 @@ const CurrenciesCrypto: FC<TCurrenciesCrypto> = ({
 
       <Styled.WrapTables>
         <TableCurrencies
-          isSelectedDefault
-          rowsMax={dataTables[0]?.rowsMax}
           dataItems={dataTables[0]?.dataCurrencies}
+          rowsMax={dataTables[0]?.rowsMax}
+          isSelectedDefault
         >
           <TableCurrenciesParts.TableHead>
             <b>{dataTables[0]?.title}</b>

@@ -15,17 +15,15 @@ const TablePanel: FC<TTablePanel> = ({
   paginationPageCurrent,
   onPagination,
   paginationTotal
-}) => {
-  return (
-    <Styled.TablePanel>
-      <Pagination
-        totalPages={pages}
-        pageActive={paginationPageCurrent}
-        onPagination={onPagination}
-        paginationTotal={paginationTotal}
-      />
-    </Styled.TablePanel>
-  )
-}
+}) => (
+  <Styled.TablePanel>
+    <Pagination
+      totalPages={pages}
+      pageActive={paginationPageCurrent}
+      onPagination={onPagination}
+      paginationTotal={paginationTotal}
+    />
+  </Styled.TablePanel>
+)
 
 export default TablePanel

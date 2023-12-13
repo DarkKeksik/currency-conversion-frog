@@ -61,7 +61,7 @@ const Input: FC<TInput> = ({
     <Styled.Wrap>
       <Styled.InputHide
         type={type}
-        min={1}
+        min={min}
         onChange={onChange}
         autoFocus={isAutoFocus}
         afterContent={value === placeholder ? '...' : afterContent}

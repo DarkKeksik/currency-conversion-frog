@@ -4,7 +4,6 @@ import * as Styled from './Pagination.styled'
 
 type TTablePanel = {
   totalPages: number
-  itemsLength: number
   pageActive: number
   onPagination: (arg: number) => void
   paginationTotal?: number

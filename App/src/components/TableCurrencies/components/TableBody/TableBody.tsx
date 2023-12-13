@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { Input, Preloader } from '../../../'
+import { Input } from '@Components'
 import * as Styled from './TableBody.styled'
 
 const TableBody: FC<any> = ({
   handler,
-  dataItems = [],
+  dataItems,
   rowsMax,
   multiSelect,
   hideInput,
@@ -37,6 +37,7 @@ const TableBody: FC<any> = ({
         const clearedArr = selectedIds.filter((itemId) => !(itemId === id))
         return setSelectedIds(clearedArr)
       }
+
       setIsClicked(true)
       return setSelectedIds([...selectedIds, id])
     }
@@ -49,15 +50,7 @@ const TableBody: FC<any> = ({
     if (handler && isClicked) {
       handler(Boolean(selectedId || selectedIds.length))
     }
-  }, [selectedId, selectedIds, isClicked])
-
-  if(!dataItems.length) {
-    return (
-      <Styled.TableBody>
-        <Preloader />
-      </Styled.TableBody>
-    )
-  }
+  }, [selectedId, selectedIds, isClicked, handler])
 
   return (
     <Styled.TableBody>
@@ -72,7 +65,7 @@ const TableBody: FC<any> = ({
 
                 {hideInput ?
                   <Styled.CurrencyValue>
-                    {(Math.random() * 10).toFixed(6)}
+                    {(Math.random() * 10).toFixed(6)} { baseAsset }
                   </Styled.CurrencyValue> :
                   <Input
                     isAutoFocus

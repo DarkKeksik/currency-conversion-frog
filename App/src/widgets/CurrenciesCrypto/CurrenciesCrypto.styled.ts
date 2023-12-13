@@ -30,8 +30,9 @@ export const Wrap = styled.div<TWrap>`
 `
 
 export const WrapTables = styled.div`
-  display: flex;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-gap: 5px;
 `
 
 export const ButtonChangeTable = styled.a`

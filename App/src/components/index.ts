@@ -10,3 +10,5 @@ export { default as TableCurrencies } from './TableCurrencies/TableCurrencies'
 export * as TableCurrenciesParts from './TableCurrencies/components'
 
 export { default as Pagination } from './Pagination/Pagination'
+
+export { default as EmptyResult } from './EmptyResult/EmptyResult'

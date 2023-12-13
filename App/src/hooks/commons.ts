@@ -6,7 +6,7 @@ import { getAssetsWithName } from '@helpers'
 import { currenciesCryptoDataFront } from '@data'
 
 export const useCryptoAssets = () => {
-  const [cryptoAssets, setCryptoAssets] = useState([])
+  const [cryptoAssets, setCryptoAssets] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,7 @@ export const useCryptoAssets = () => {
 }
 
 export const useStableCurrencies = () => {
-  const [currencies, setCurrencies] = useState([])
+  const [currencies, setCurrencies] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,16 +48,19 @@ export const usePaginationData = (data, pageCurrency = 1, limit = 3) => {
   const [dataPiece, setDataPiece] = useState([])
 
   useEffect(() => {
-    setTotalPages(Math.ceil(data.length / limit))
+    if(data) {
+      setTotalPages(Math.ceil(data.length / limit))
+    }
   }, [data, limit])
 
   useEffect(() => {
-    const [indexStart, indexEnd] = [
-      (pageCurrency - 1) * limit,
-      (pageCurrency - 1) * limit + limit
-    ]
-
-    setDataPiece(data.slice(indexStart, indexEnd))
+    if(data) {
+      const [indexStart, indexEnd] = [
+        (pageCurrency - 1) * limit,
+        (pageCurrency - 1) * limit + limit
+      ]
+      setDataPiece(data.slice(indexStart, indexEnd))
+    }
   }, [data, pageCurrency, limit])
 
   return [dataPiece, totalPages]
